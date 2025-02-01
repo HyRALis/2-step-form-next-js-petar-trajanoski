@@ -14,7 +14,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', text, icon, className, ...rest }) => {
     const primaryClassName = 'bg-primary hover:bg-primaryDark text-white';
     const secondaryClassName = 'bg-primaryLighter hover: bg-primaryLight text-primary';
-    const transparent = 'text-primary hover:text-darkBlueTransparent';
+    const transparent = 'text-primary hover:bg-darkBlue4';
 
     const defaultSize = 'text-[16px] leading-[24px] px-[24px] py-[16px]';
     const smallSize = 'text-[14px] leading-[20px] px-[20px] py-[14px]';
@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md'
                 className,
                 variant === 'primary' ? primaryClassName : variant === 'secondary' ? secondaryClassName : transparent,
                 size === 'xs' ? extraSmallSize : size === 'sm' ? smallSize : defaultSize,
-                'flex items-center justify-center space-x-2 p-2 rounded-full font-bold font-[family-name:var(--font-hanken-grotesk)]'
+                'flex items-center justify-center space-x-2 rounded-full font-bold font-[family-name:var(--font-hanken-grotesk)]'
             ])}`}
             {...rest}
         >
