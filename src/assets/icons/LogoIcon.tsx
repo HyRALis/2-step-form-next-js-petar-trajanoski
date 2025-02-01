@@ -1,7 +1,7 @@
 import { ISvgComponentProps } from '@/types';
 import React from 'react';
 
-export const GreenCircleWithCheckmark: React.FC<ISvgComponentProps> = ({ svgProps, pathProps, path2Props }) => {
+export const LogoIcon: React.FC<ISvgComponentProps> = ({ svgProps, pathProps, path2Props }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +12,8 @@ export const GreenCircleWithCheckmark: React.FC<ISvgComponentProps> = ({ svgProp
             {...svgProps}
         >
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M56.5 28C56.5 43.464 43.964 56 28.5 56C13.036 56 0.5 43.464 0.5 28C0.5 12.536 13.036 0 28.5 0C43.964 0 56.5 12.536 56.5 28ZM54.4 28C54.4 42.3042 42.8042 53.9 28.5 53.9C14.1958 53.9 2.6 42.3042 2.6 28C2.6 13.6958 14.1958 2.1 28.5 2.1C42.8042 2.1 54.4 13.6958 54.4 28Z"
                 fill="currentColor"
                 {...pathProps}

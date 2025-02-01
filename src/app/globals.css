@@ -6,20 +6,14 @@
     --background: #f6fafe;
     --foreground: #171717;
     --primary: #0d71c9;
+    --primaryDark: #0B61AD;
+    --primaryLight: #D9ECFD;
+    --primaryLighter: #ECF5FE;
     --secondary: #0216261f;
     --danger: #f23148;
     --darkBlue: #021626;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #f6fafe;
-        --primary: #0d71c9;
-        --secondary: #0216261f;
-        --danger: #f23148;
-        --darkBlue: #021626;
-    }
+    --darkBlue4: #0216260A;
+    --darkBlue12: #0216261F;
 }
 
 body {

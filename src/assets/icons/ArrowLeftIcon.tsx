@@ -1,7 +1,7 @@
 import { ISvgComponentProps } from '@/types';
 import React from 'react';
 
-export const GreenCircleWithCheckmark: React.FC<ISvgComponentProps> = ({ svgProps, pathProps }) => {
+export const ArrowLeftIcon: React.FC<ISvgComponentProps> = ({ svgProps, pathProps }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

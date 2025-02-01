@@ -12,9 +12,14 @@ export default {
                 background: 'var(--background)',
                 foreground: 'var(--foreground)',
                 primary: 'var(--primary)',
+                primaryDark: 'var(--primaryDark)',
+                primaryLight: 'var(--primaryLight)',
+                primaryLighter: 'var(--primaryLighter)',
                 secondary: 'var(--secondary)',
                 danger: 'var(--danger)',
-                darkBlue: 'var(--darkBlue)'
+                darkBlue: 'var(--darkBlue)',
+                darkBlue12: 'var(--darkBlue12)',
+                darkBlue4: 'var(--darkBlue4)'
             }
         }
     },
