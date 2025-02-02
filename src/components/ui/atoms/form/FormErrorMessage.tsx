@@ -7,7 +7,7 @@ export interface FormErrorMessageProps {
 
 export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({ errorMessage }) => {
     return (
-        <div className="flex items-center space-x-[5px] text-danger text-[12px] leading-[16px]">
+        <div className="flex items-center space-x-[5px] text-danger text-sm leading-4">
             <CircleTimesIcon />
             <span>{errorMessage}</span>
         </div>

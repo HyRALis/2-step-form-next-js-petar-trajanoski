@@ -16,9 +16,9 @@ export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md'
     const secondaryClassName = 'bg-primaryLighter hover: bg-primaryLight text-primary';
     const transparent = 'text-primary hover:bg-darkBlue4';
 
-    const defaultSize = 'text-[16px] leading-[24px] px-[24px] py-[16px]';
-    const smallSize = 'text-[14px] leading-[20px] px-[20px] py-[14px]';
-    const extraSmallSize = 'text-[12px] leading-[16px] px-[16px] py-[12px]';
+    const defaultSize = 'text-base leading-6 px-6 py-4';
+    const smallSize = 'text-sm leading-5 px-5 py-[14px]';
+    const extraSmallSize = 'text-xs leading-4 px-4 py-3';
 
     return (
         <button

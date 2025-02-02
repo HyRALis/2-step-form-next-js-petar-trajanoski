@@ -10,7 +10,7 @@ export const Heading: React.FC<HeadingProps> = ({ text, className, ...rest }) =>
         <h3
             className={`${tailwindMerge([
                 className,
-                'text-darkBlue text-[20px] font-bold leading-[28px] font-[family-name:var(--font-eb-garamond)]'
+                'text-darkBlue text-xl font-bold font-[family-name:var(--font-eb-garamond)]'
             ])}`}
             {...rest}
         >

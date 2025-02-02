@@ -7,9 +7,5 @@ export interface ContainerProps {
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, className }) => {
-    return (
-        <div className={tailwindMerge(['flex flex-col w-full h-full md:px-[24px] px-[16px]', className])}>
-            {children}
-        </div>
-    );
+    return <div className={tailwindMerge(['flex flex-col w-full h-full md:px-6 px-4', className])}>{children}</div>;
 };

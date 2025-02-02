@@ -12,7 +12,7 @@ export const FormInput: React.FC<FormInputProps> = ({ hasError, type, className,
         <input
             type={type}
             className={tailwindMerge([
-                'py-[16px] px-[24px] w-full rounded-full border-[2px] border-darkBlue12 focus:border-primary bg-transparent',
+                'py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary bg-transparent',
                 className,
                 hasError && errorClasses
             ])}
