@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md'
                 className,
                 variant === 'primary' ? primaryClassName : variant === 'secondary' ? secondaryClassName : transparent,
                 size === 'xs' ? extraSmallSize : size === 'sm' ? smallSize : defaultSize,
-                'flex items-center justify-center space-x-2 rounded-full font-bold font-[family-name:var(--font-hanken-grotesk)]'
+                'flex items-center justify-center space-x-2 rounded-full font-bold font-[family-name:var(--font-hanken-grotesk)] transition-all duration-200 ease-in-out'
             ])}`}
             {...rest}
         >
