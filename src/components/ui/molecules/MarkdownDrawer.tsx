@@ -23,7 +23,7 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
         <Drawer
             isOpen={isOpen}
             header={
-                <HeaderContainer className="mt-0 flex-row-reverse">
+                <HeaderContainer className="flex-row-reverse">
                     <Button variant="icon" icon={<TimesIcon />} onClick={() => onClose()} />
                 </HeaderContainer>
             }

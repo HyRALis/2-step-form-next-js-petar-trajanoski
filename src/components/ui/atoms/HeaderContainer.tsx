@@ -10,7 +10,7 @@ export const HeaderContainer: React.FC<HeaderContainerProps> = ({ children, clas
     return (
         <div
             className={tailwindMerge([
-                'flex justify-between items-center fixed top-0 left-0 z-10 w-full h-[72px] backdrop-blur-xl px-2 my-3',
+                'flex justify-between items-center fixed top-0 left-0 z-10 w-full h-[72px] backdrop-blur-xl px-2',
                 className
             ])}
         >
