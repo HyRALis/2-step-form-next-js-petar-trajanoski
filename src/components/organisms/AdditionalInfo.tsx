@@ -15,11 +15,11 @@ export const AdditionalInfo = () => {
         <>
             <Paragraph>
                 By clicking `Continue` you agree to our{' '}
-                <span className="text-primary font-bold text-xs" onClick={() => setIsOpenTos(true)}>
+                <span className="text-primary font-bold text-xs cursor-pointer" onClick={() => setIsOpenTos(true)}>
                     terms and conditions
                 </span>{' '}
                 and{' '}
-                <span className="text-primary font-bold text-xs" onClick={() => setIsOpenPrivacy(true)}>
+                <span className="text-primary font-bold text-xs cursor-pointer" onClick={() => setIsOpenPrivacy(true)}>
                     privacy policy
                 </span>
             </Paragraph>
