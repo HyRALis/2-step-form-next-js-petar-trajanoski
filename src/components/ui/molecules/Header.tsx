@@ -11,7 +11,7 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ hasArrow }) => {
     return (
         <HeaderContainer>
-            {hasArrow && <Button variant="transparent" size="md" icon={<ArrowLeftIcon />} />}
+            {hasArrow && <Button variant="icon" size="md" icon={<ArrowLeftIcon />} />}
             <div className="absolute flex items-center justify-center top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-primary">
                 <LogoIcon />
             </div>
