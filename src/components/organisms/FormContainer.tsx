@@ -3,9 +3,9 @@
 import React from 'react';
 import { Container } from '../ui/atoms/Container';
 import { Tabs } from '../ui/molecules/Tabs';
-import { FormTab2 } from './FormTab2';
+import { PhoneNumberForm } from './PhoneNumberForm';
 import { useUserContext } from '@/context/MainContext';
-import { FormTab1 } from './FormTab1';
+import { PersonalInformationForm } from './PersonalInformationForm';
 
 export const FormContainer = () => {
     const {
@@ -17,7 +17,7 @@ export const FormContainer = () => {
             <div className="flex justify-center items-center my-[9px]">
                 <Tabs tabs={[1, 2]} />
             </div>
-            {tab === 1 ? <FormTab1 /> : <FormTab2 />}
+            {tab === 1 ? <PersonalInformationForm /> : <PhoneNumberForm />}
         </Container>
     );
 };

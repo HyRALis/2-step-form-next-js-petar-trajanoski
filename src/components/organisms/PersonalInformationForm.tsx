@@ -9,7 +9,7 @@ import { Paragraph } from '../ui/atoms/Paragraph';
 import { useUserContext } from '@/context/MainContext';
 import { textInputValidation } from '@/utils/validation';
 
-export const FormTab1 = () => {
+export const PersonalInformationForm = () => {
     const {
         user,
         errors: { firstNameError, lastNameError },

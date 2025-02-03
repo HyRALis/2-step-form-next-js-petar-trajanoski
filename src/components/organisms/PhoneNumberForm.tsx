@@ -11,7 +11,7 @@ import { FormDropdown } from './FormDropdown';
 import { useUserContext } from '@/context/MainContext';
 import { phoneInputValidation } from '@/utils/validation';
 
-export const FormTab2 = () => {
+export const PhoneNumberForm = () => {
     const {
         user,
         errors: { phoneNumberError },
