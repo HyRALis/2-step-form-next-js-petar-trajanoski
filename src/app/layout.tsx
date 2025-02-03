@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { tailwindMerge } from '@/utils/tailwindMerge';
+import { UserProvider } from '@/context/MainContext';
 
 const ebGaramond = EB_Garamond({
     variable: '--font-eb-garamond',
@@ -26,7 +27,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={tailwindMerge([`${ebGaramond.variable}`, `${hkGrotesk.variable}`, 'antialiased'])}>
-                {children}
+                <UserProvider>{children}</UserProvider>
             </body>
         </html>
     );

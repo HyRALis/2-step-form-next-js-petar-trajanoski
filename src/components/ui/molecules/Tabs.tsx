@@ -1,23 +1,25 @@
 'use client';
 
-import React, { Fragment } from 'react';
+import React from 'react';
+
 import { TabTag } from '../atoms/TabTag';
+import { useUserContext } from '@/context/MainContext';
 
 export interface TabsProps {
-    tabs: string[];
+    tabs: number[];
 }
 
 export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
-    const [activeTab, setActiveTab] = React.useState(tabs[0]);
+    const { user } = useUserContext();
 
     return (
         <div className="flex justify-center items-center space-x-[4px]">
             {tabs.map((tab, index) => {
                 return (
-                    <Fragment key={tab}>
+                    <React.Fragment key={tab}>
                         {index !== 0 && <TabsSeparator />}
-                        <TabTag text={tab} isActive={activeTab === tab} onClick={() => setActiveTab(tab)} />
-                    </Fragment>
+                        <TabTag text={tab.toString()} isActive={user.tab === tab} />
+                    </React.Fragment>
                 );
             })}
         </div>
