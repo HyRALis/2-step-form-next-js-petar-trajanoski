@@ -40,7 +40,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     }, []);
 
     React.useEffect(() => {
-        console.log({ user });
         localStorage.setItem('user', JSON.stringify(user));
     }, [user]);
 

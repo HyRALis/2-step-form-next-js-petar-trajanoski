@@ -43,8 +43,6 @@ export const FormTab1 = () => {
         const firstNameError = textInputValidation(user.firstName);
         const lastNameError = textInputValidation(user.lastName);
 
-        console.log({ firstNameError, lastNameError });
-
         setErrors((prevErrors) => ({
             ...prevErrors,
             firstNameError,
@@ -54,6 +52,7 @@ export const FormTab1 = () => {
         if (!firstNameError && !lastNameError) {
             setUser((prevUser) => ({ ...prevUser, tab: 2 }));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.firstName, user.lastName]);
 
     return (

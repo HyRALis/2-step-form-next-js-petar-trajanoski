@@ -11,7 +11,7 @@ import { FormDropdown } from './FormDropdown';
 export const FormTab2 = () => {
     return (
         <>
-            <div className="flex flex-col space-y-4 mb-6">
+            <div className="flex flex-col space-y-4 py-6">
                 <Heading text="Let's validate your number" />
                 <div className="flex flex-col space-y-1 w-full">
                     <FormLabel text="Phone number" />
