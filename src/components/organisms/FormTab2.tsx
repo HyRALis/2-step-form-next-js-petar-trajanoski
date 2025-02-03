@@ -50,6 +50,7 @@ export const FormTab2 = () => {
                     <div className="flex space-x-1 w-full">
                         <FormDropdown value={user.prefix} hasError={!!phoneNumberError} />
                         <FormInput
+                            type="tel"
                             placeholder="07890 123456"
                             className="placeholder:text-light"
                             value={user.phoneNumber}

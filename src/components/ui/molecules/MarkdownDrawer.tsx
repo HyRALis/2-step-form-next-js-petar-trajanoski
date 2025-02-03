@@ -28,7 +28,7 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
                 </HeaderContainer>
             }
         >
-            <div className="mt-24 h-full px-2">
+            <div className="mt-[72px] h-full px-2">
                 <Markdown
                     components={{
                         h3: ({ node, ...props }) => (

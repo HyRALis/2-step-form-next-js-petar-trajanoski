@@ -57,7 +57,7 @@ export const FormTab1 = () => {
 
     return (
         <>
-            <div className="flex flex-col py-6 space-y-4">
+            <div className="flex flex-col pt-6 space-y-4">
                 <Heading text="Some introductions" />
                 <Input
                     label="First Name"

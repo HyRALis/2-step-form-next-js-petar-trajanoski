@@ -14,7 +14,7 @@ export const AdditionalInfo = () => {
     return (
         <>
             <Paragraph className="mb-6">
-                By clicking `Continue` you agree to our{' '}
+                By clicking &apos;Continue&apos; you confirm that you agree to our{' '}
                 <span className="text-primary font-bold text-xs cursor-pointer" onClick={() => setIsOpenTos(true)}>
                     terms and conditions
                 </span>{' '}

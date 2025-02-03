@@ -17,9 +17,9 @@ export const CountryPrefixListItem: React.FC<FlagListItemProps> = ({ name, prefi
         >
             <div className="w-20 flex items-center space-x-2 flex-shrink-0 flex-grow-0">
                 <FlagImage src={src} alt={name} />
-                <Paragraph>{prefix}</Paragraph>
+                <Paragraph className="text-sm leading-6">{prefix}</Paragraph>
             </div>
-            <Paragraph>{name}</Paragraph>
+            <Paragraph className="text-sm leading-6">{name}</Paragraph>
         </li>
     );
 };
