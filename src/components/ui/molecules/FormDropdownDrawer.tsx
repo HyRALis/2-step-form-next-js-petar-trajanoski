@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 import { TimesIcon } from '@/assets/icons/TimesIcon';
 import { Button } from '../atoms/Button';
 import { Drawer } from '../atoms/Drawer';
@@ -15,6 +17,7 @@ export interface FormDropdownDrawerProps {
 
 export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, onClose }) => {
     const { setUser } = useUserContext();
+    const [searchQuery, setSearchQuery] = React.useState('');
 
     const handleChange = ({ prefix }: { prefix: string; name: string }) => {
         setUser((prevUser) => ({ ...prevUser, prefix }));
@@ -25,13 +28,13 @@ export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, 
         <Drawer
             header={
                 <HeaderContainer className="flex items-center justify-between space-x-2 py-2 pl-6 pr-2">
-                    <SearchBar getSearchResults={(query) => console.log(query)} />
+                    <SearchBar getSearchResults={(query) => setSearchQuery(query)} />
                     <Button variant="icon" icon={<TimesIcon />} onClick={onClose} />
                 </HeaderContainer>
             }
             isOpen={isOpen}
         >
-            <CountryPrefixList onChange={handleChange} />
+            <CountryPrefixList searchQuery={searchQuery} onChange={handleChange} />
         </Drawer>
     );
 };
