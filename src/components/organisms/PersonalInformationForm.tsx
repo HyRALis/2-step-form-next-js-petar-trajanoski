@@ -61,6 +61,7 @@ export const PersonalInformationForm = () => {
                 <Heading text="Some introductions" />
                 <Input
                     label="First Name"
+                    name={'first-name'}
                     value={user.firstName}
                     errorMessage={firstNameError ?? ''}
                     placeholder="Your first name"
@@ -68,6 +69,7 @@ export const PersonalInformationForm = () => {
                 />
                 <Input
                     label="Last Name"
+                    name="last-name"
                     value={user.lastName}
                     errorMessage={lastNameError ?? ''}
                     placeholder="Your last name"
@@ -81,8 +83,15 @@ export const PersonalInformationForm = () => {
                     size="md"
                     text="Continue"
                     onClick={handleOnContinueClick}
+                    aria-label="continue-to-step-2"
                 />
-                <Button variant="transparent" className="w-full" size="md" text="Already have an account?" />
+                <Button
+                    variant="transparent"
+                    className="w-full"
+                    size="md"
+                    text="Already have an account?"
+                    aria-label="already-have-an-account"
+                />
             </div>
             <Paragraph className="text-center mt-6 text-lightGray">Version 0.1</Paragraph>
         </>

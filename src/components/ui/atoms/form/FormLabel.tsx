@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface FormLabelProps extends React.HTMLAttributes<HTMLLabelElement> {
+export interface FormLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
     text: string;
 }
 

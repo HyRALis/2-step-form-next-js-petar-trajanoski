@@ -52,7 +52,7 @@ export const PhoneNumberForm = () => {
             <div className="flex flex-col space-y-4 py-6">
                 <Heading text="Let's validate your number" />
                 <div className="flex flex-col space-y-1 w-full">
-                    <FormLabel text="Phone number" />
+                    <FormLabel text="Phone number" htmlFor="phone-number" />
                     <div className="flex space-x-1 w-full">
                         <FormDropdown value={user.prefix} hasError={!!phoneNumberError} />
                         <FormInput
@@ -62,6 +62,7 @@ export const PhoneNumberForm = () => {
                             value={user.phoneNumber}
                             onChange={handlePhoneNumberChange}
                             hasError={!!phoneNumberError}
+                            aria-labelledby="phone-number"
                         />
                     </div>
                     {phoneNumberError && <FormErrorMessage errorMessage={phoneNumberError} />}
@@ -69,7 +70,14 @@ export const PhoneNumberForm = () => {
             </div>
             <div className="flex flex-col">
                 <AdditionalInfo />
-                <Button variant="primary" className="w-full" size="md" text="Continue" onClick={handleContinueClick} />
+                <Button
+                    variant="primary"
+                    className="w-full"
+                    size="md"
+                    text="Continue"
+                    onClick={handleContinueClick}
+                    aria-label="continue"
+                />
             </div>
         </>
     );
