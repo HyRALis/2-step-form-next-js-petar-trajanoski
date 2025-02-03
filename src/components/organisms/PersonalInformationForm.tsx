@@ -18,9 +18,6 @@ export const PersonalInformationForm = () => {
         setErrors
     } = useUserContext();
 
-    const [isVisible, setIsVisible] = React.useState(false);
-    const [animateOut, setAnimateOut] = React.useState(false);
-
     const handleFirstNameChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             if (firstNameError) {
@@ -41,13 +38,6 @@ export const PersonalInformationForm = () => {
         [lastNameError, user]
     );
 
-    React.useEffect(() => {
-        setIsVisible(true);
-        return () => {
-            setAnimateOut(true);
-        };
-    }, []);
-
     const handleOnContinueClick = React.useCallback(() => {
         const firstNameError = textInputValidation(user.firstName);
         const lastNameError = textInputValidation(user.lastName);
@@ -67,14 +57,8 @@ export const PersonalInformationForm = () => {
         <div
             className={tailwindMerge([
                 'flex flex-col w-full transform transition-all duration-200 ease-in-out',
-                animateOut ? 'animate-slideOutToLeft' : 'animate-slideInFromLeft'
+                'animate-slideInFromLeft'
             ])}
-            onAnimationEnd={() => {
-                if (animateOut) {
-                    setIsVisible(false);
-                    setAnimateOut(false);
-                }
-            }}
         >
             <div className="flex flex-col pt-6 space-y-4">
                 <Heading text="Some introductions" />
