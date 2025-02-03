@@ -22,7 +22,6 @@ export const PhoneNumberForm = () => {
         resetUser
     } = useUserContext();
 
-    const [isVisible, setIsVisible] = React.useState(false);
     const [animateOut, setAnimateOut] = React.useState(false);
 
     const router = useRouter();
@@ -59,7 +58,6 @@ export const PhoneNumberForm = () => {
             ])}
             onAnimationEnd={() => {
                 if (animateOut) {
-                    setIsVisible(false);
                     setAnimateOut(false);
                 }
             }}
