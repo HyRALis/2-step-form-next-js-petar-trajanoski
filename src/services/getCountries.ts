@@ -10,13 +10,18 @@ export const fetchCountries = async (): Promise<ICountryPhonePrefix[]> => {
         }
 
         const data = await response.json();
-        return data.map(
-            (country: ICountryResponse): ICountryPhonePrefix => ({
-                name: country.name?.common ?? 'Unknown',
-                flag: country.flags?.png ?? 'No flag available',
-                prefix: country?.idd?.root ?? 'No prefix'
-            })
-        );
+        return data
+            .sort((a: ICountryResponse, b: ICountryResponse) => a.name.common.localeCompare(b.name.common))
+            .map(
+                (country: ICountryResponse): ICountryPhonePrefix => ({
+                    name: country.name?.common ?? 'Unknown',
+                    flag: country.flags?.png ?? 'No flag available',
+                    prefix:
+                        country?.idd?.root && country?.idd?.suffixes
+                            ? `${country.idd.root}${country.idd.suffixes[0]}`
+                            : country.idd.root ?? 'No prefix'
+                })
+            );
     } catch (error) {
         console.error('Error fetching country data:', error);
         return [];
