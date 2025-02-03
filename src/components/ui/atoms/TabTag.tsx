@@ -20,6 +20,7 @@ export const TabTag: React.FC<TabTagProps> = ({ text, isActive, onClick }) => {
         <button
             className={`${tailwindMerge([
                 'w-8 h-8 flex items-center justify-center rounded-full bg-darkBlue4 text-darkBlue12 font-[family-name:var(--font-eb-garamond)] font-bold text-base transition-all duration-200 ease-in-out',
+                onClick ? 'cursor-pointer' : 'cursor-default',
                 isActive && activeClass
             ])}`}
             onClick={handleOnClick}
