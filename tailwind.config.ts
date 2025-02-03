@@ -19,7 +19,8 @@ export default {
                 danger: 'var(--danger)',
                 darkBlue: 'var(--darkBlue)',
                 darkBlue12: 'var(--darkBlue12)',
-                darkBlue4: 'var(--darkBlue4)'
+                darkBlue4: 'var(--darkBlue4)',
+                lightGray: 'var(--lightGray)'
             }
         }
     },

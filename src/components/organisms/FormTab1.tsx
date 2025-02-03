@@ -74,7 +74,7 @@ export const FormTab1 = () => {
                     onChange={handleLastNameChange}
                 />
             </div>
-            <div className="flex flex-col py-6 space-y-2">
+            <div className="flex flex-col pt-6 space-y-2">
                 <Button
                     variant="primary"
                     className="w-full"
@@ -84,7 +84,7 @@ export const FormTab1 = () => {
                 />
                 <Button variant="transparent" className="w-full" size="md" text="Already have an account?" />
             </div>
-            <Paragraph className="text-center mt-6">Version 0.1.0</Paragraph>
+            <Paragraph className="text-center mt-6 text-lightGray">Version 0.1</Paragraph>
         </>
     );
 };
