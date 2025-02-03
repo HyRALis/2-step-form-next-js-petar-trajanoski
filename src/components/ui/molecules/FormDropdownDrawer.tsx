@@ -27,12 +27,13 @@ export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, 
     return (
         <Drawer
             header={
-                <HeaderContainer className="flex items-center justify-between space-x-2 py-2 pl-6 pr-2">
+                <HeaderContainer className="flex items-center justify-between space-x-2 py-2 pl-6 pr-2 left-1/2 -translate-x-1/2">
                     <SearchBar getSearchResults={(query) => setSearchQuery(query)} />
                     <Button variant="icon" icon={<TimesIcon />} onClick={onClose} />
                 </HeaderContainer>
             }
             isOpen={isOpen}
+            setIsOpen={onClose}
         >
             <CountryPrefixList searchQuery={searchQuery} onChange={handleChange} />
         </Drawer>

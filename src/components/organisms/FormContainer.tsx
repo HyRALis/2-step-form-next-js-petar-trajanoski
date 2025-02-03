@@ -13,7 +13,7 @@ export const FormContainer = () => {
     } = useUserContext();
 
     return (
-        <Container className="pt-[72px] mb-6 h-full overflow-auto">
+        <Container className="pt-[72px] mb-6 h-full overflow-auto max-w-96 lg:max-w-2xl">
             <div className="flex justify-center items-center my-[9px]">
                 <Tabs tabs={[1, 2]} />
             </div>

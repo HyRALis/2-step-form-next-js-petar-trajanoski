@@ -22,13 +22,14 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
     return (
         <Drawer
             isOpen={isOpen}
+            setIsOpen={onClose}
             header={
                 <HeaderContainer className="flex-row-reverse">
                     <Button variant="icon" icon={<TimesIcon />} onClick={() => onClose()} />
                 </HeaderContainer>
             }
         >
-            <div className="mt-[72px] h-full px-2">
+            <div className=" flex flex-col mt-[72px] h-full px-2 max-w-full">
                 <Markdown
                     components={{
                         h3: ({ node, ...props }) => (

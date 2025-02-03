@@ -37,7 +37,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
     }, [searchQuery, countries]);
 
     return (
-        <div className="flex flex-col pt-[72px]">
+        <div className="flex flex-col items-center pt-[72px] w-full">
             {countriesToDisplay &&
                 countriesToDisplay.length > 0 &&
                 countriesToDisplay.map((country) => (
