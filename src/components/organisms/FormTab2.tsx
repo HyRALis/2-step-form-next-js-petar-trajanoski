@@ -6,7 +6,7 @@ import { Button } from '../ui/atoms/Button';
 import { FormLabel } from '../ui/atoms/form/FormLabel';
 import { FormInput } from '../ui/atoms/form/FormInput';
 import { FormErrorMessage } from '../ui/atoms/form/FormErrorMessage';
-import { FormDropdown } from '../ui/molecules/FormDropdown';
+import { FormDropdown } from './FormDropdown';
 
 export const FormTab2 = () => {
     return (
