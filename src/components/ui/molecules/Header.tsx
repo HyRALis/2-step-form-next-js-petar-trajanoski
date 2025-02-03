@@ -21,6 +21,7 @@ export const Header: React.FC = () => {
                     size="md"
                     icon={<ArrowLeftIcon />}
                     onClick={() => setUser((prevUser) => ({ ...prevUser, tab: 1 }))}
+                    aria-label="go-back"
                 />
             )}
             <div className="absolute flex items-center justify-center top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-primary">
