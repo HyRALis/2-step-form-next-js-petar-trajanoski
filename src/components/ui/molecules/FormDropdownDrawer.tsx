@@ -1,9 +1,12 @@
+'use client';
+
 import { TimesIcon } from '@/assets/icons/TimesIcon';
 import { Button } from '../atoms/Button';
 import { Drawer } from '../atoms/Drawer';
 import { SearchBar } from '../atoms/SearchBar';
 import { CountryPrefixList } from './CountryPrefixList';
 import { HeaderContainer } from '../atoms/HeaderContainer';
+import { useUserContext } from '@/context/MainContext';
 
 export interface FormDropdownDrawerProps {
     isOpen: boolean;
@@ -11,6 +14,13 @@ export interface FormDropdownDrawerProps {
 }
 
 export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, onClose }) => {
+    const { setUser } = useUserContext();
+
+    const handleChange = ({ prefix }: { prefix: string; name: string }) => {
+        setUser((prevUser) => ({ ...prevUser, prefix }));
+        onClose();
+    };
+
     return (
         <Drawer
             header={
@@ -21,7 +31,7 @@ export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, 
             }
             isOpen={isOpen}
         >
-            <CountryPrefixList onChange={({ prefix, name }) => console.log(prefix, name)} />
+            <CountryPrefixList onChange={handleChange} />
         </Drawer>
     );
 };

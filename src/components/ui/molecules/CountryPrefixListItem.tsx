@@ -12,7 +12,7 @@ export interface FlagListItemProps extends Omit<ICountryPhonePrefix, 'flag'> {
 export const CountryPrefixListItem: React.FC<FlagListItemProps> = ({ name, prefix, src, onClick }) => {
     return (
         <li
-            className="w-full flex items-center space-x-2 px-6 py-4 bg-transparent hover:bg-darkBlue4"
+            className="w-full flex items-center space-x-2 px-6 py-4 bg-transparent hover:bg-darkBlue4 cursor-pointer"
             onClick={() => onClick({ name, prefix })}
         >
             <div className="w-20 flex items-center space-x-2 flex-shrink-0 flex-grow-0">
