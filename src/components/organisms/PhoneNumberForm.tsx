@@ -11,6 +11,7 @@ import { FormDropdown } from './FormDropdown';
 import { useUserContext } from '@/context/MainContext';
 import { phoneInputValidation } from '@/utils/validation';
 import { useRouter } from 'next/navigation';
+import { tailwindMerge } from '@/utils/tailwindMerge';
 
 export const PhoneNumberForm = () => {
     const {
@@ -20,6 +21,9 @@ export const PhoneNumberForm = () => {
         setErrors,
         resetUser
     } = useUserContext();
+
+    const [isVisible, setIsVisible] = React.useState(false);
+    const [animateOut, setAnimateOut] = React.useState(false);
 
     const router = useRouter();
 
@@ -48,7 +52,18 @@ export const PhoneNumberForm = () => {
     }, [user.phoneNumber]);
 
     return (
-        <>
+        <div
+            className={tailwindMerge([
+                'flex flex-col w-full transform transition-all duration-200 ease-in-out',
+                animateOut ? 'animate-slideOutToRight' : 'animate-slideInFromRight'
+            ])}
+            onAnimationEnd={() => {
+                if (animateOut) {
+                    setIsVisible(false);
+                    setAnimateOut(false);
+                }
+            }}
+        >
             <div className="flex flex-col space-y-4 py-6">
                 <Heading text="Let's validate your number" />
                 <div className="flex flex-col space-y-1 w-full">
@@ -79,6 +94,6 @@ export const PhoneNumberForm = () => {
                     aria-label="continue"
                 />
             </div>
-        </>
+        </div>
     );
 };

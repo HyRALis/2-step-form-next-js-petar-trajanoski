@@ -8,6 +8,7 @@ import { Button } from '../ui/atoms/Button';
 import { Paragraph } from '../ui/atoms/Paragraph';
 import { useUserContext } from '@/context/MainContext';
 import { textInputValidation } from '@/utils/validation';
+import { tailwindMerge } from '@/utils/tailwindMerge';
 
 export const PersonalInformationForm = () => {
     const {
@@ -17,6 +18,9 @@ export const PersonalInformationForm = () => {
         setErrors
     } = useUserContext();
 
+    const [isVisible, setIsVisible] = React.useState(false);
+    const [animateOut, setAnimateOut] = React.useState(false);
+
     const handleFirstNameChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             if (firstNameError) {
@@ -24,7 +28,6 @@ export const PersonalInformationForm = () => {
             }
             setUser((prevUser) => ({ ...prevUser, firstName: e.target.value }));
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [firstNameError, user]
     );
 
@@ -35,9 +38,15 @@ export const PersonalInformationForm = () => {
             }
             setUser((prevUser) => ({ ...prevUser, lastName: e.target.value }));
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [lastNameError, user]
     );
+
+    React.useEffect(() => {
+        setIsVisible(true);
+        return () => {
+            setAnimateOut(true);
+        };
+    }, []);
 
     const handleOnContinueClick = React.useCallback(() => {
         const firstNameError = textInputValidation(user.firstName);
@@ -52,11 +61,21 @@ export const PersonalInformationForm = () => {
         if (!firstNameError && !lastNameError) {
             setUser((prevUser) => ({ ...prevUser, tab: 2 }));
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.firstName, user.lastName]);
 
     return (
-        <>
+        <div
+            className={tailwindMerge([
+                'flex flex-col w-full transform transition-all duration-200 ease-in-out',
+                animateOut ? 'animate-slideOutToLeft' : 'animate-slideInFromLeft'
+            ])}
+            onAnimationEnd={() => {
+                if (animateOut) {
+                    setIsVisible(false);
+                    setAnimateOut(false);
+                }
+            }}
+        >
             <div className="flex flex-col pt-6 space-y-4">
                 <Heading text="Some introductions" />
                 <Input
@@ -94,6 +113,6 @@ export const PersonalInformationForm = () => {
                 />
             </div>
             <Paragraph className="text-center mt-6 text-lightGray">Version 0.1</Paragraph>
-        </>
+        </div>
     );
 };
