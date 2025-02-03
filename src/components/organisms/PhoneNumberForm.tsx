@@ -10,14 +10,18 @@ import { FormErrorMessage } from '../ui/atoms/form/FormErrorMessage';
 import { FormDropdown } from './FormDropdown';
 import { useUserContext } from '@/context/MainContext';
 import { phoneInputValidation } from '@/utils/validation';
+import { useRouter } from 'next/navigation';
 
 export const PhoneNumberForm = () => {
     const {
         user,
         errors: { phoneNumberError },
         setUser,
-        setErrors
+        setErrors,
+        resetUser
     } = useUserContext();
+
+    const router = useRouter();
 
     const handlePhoneNumberChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +40,9 @@ export const PhoneNumberForm = () => {
         setErrors((prevErrors) => ({ ...prevErrors, phoneNumberError }));
 
         if (!phoneNumberError) {
-            setUser((prevUser) => ({ ...prevUser, tab: 2 }));
+            resetUser();
+            localStorage.removeItem('user');
+            router.push('/confirmation');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.phoneNumber]);

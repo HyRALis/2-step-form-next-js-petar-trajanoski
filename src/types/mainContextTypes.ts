@@ -17,4 +17,5 @@ export interface UserContextProps {
     setUser: React.Dispatch<React.SetStateAction<UserProps>>;
     errors: ErrorState;
     setErrors: React.Dispatch<React.SetStateAction<ErrorState>>;
+    resetUser: () => void;
 }

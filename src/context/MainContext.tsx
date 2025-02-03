@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { ErrorState, UserContextProps, UserProps } from '@/types/mainContextTypes';
 
@@ -43,7 +43,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         localStorage.setItem('user', JSON.stringify(user));
     }, [user]);
 
-    return <UserContext.Provider value={{ user, setUser, errors, setErrors }}>{children}</UserContext.Provider>;
+    const resetUser = useCallback(() => setUser(defaultUser), []);
+
+    return (
+        <UserContext.Provider value={{ user, setUser, errors, setErrors, resetUser }}>{children}</UserContext.Provider>
+    );
 };
 
 export const useUserContext = () => {
