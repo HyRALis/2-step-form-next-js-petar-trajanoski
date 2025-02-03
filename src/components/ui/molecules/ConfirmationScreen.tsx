@@ -11,7 +11,7 @@ export const ConfirmationScreen = () => {
                 <CheckmarkCircle />
                 <Heading className="text-2xl" text="Congratulations" />
                 <Paragraph className="text-base">Welcome to your own 25</Paragraph>
-                <Link href={'/'} className="text-primary font-bold text-xs cursor-pointer">
+                <Link href={'/'} className="text-base text-primary font-bold cursor-pointer">
                     Back to start
                 </Link>
             </div>
