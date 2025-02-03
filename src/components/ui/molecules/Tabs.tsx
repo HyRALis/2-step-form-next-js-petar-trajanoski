@@ -27,5 +27,5 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 };
 
 const TabsSeparator = () => {
-    return <div className="w-1 h-1 bg-darkBlue4" />;
+    return <div className="w-1 h-1 bg-darkBlue12" />;
 };
