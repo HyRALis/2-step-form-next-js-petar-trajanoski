@@ -18,7 +18,7 @@ export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError }) =
         <>
             <button
                 className={tailwindMerge([
-                    'flex items-center justify-between max-w-min space-x-3 flex-grow-0 flex-shrink-0 py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary bg-transparent transition-all duration-200 ease-in-out',
+                    'flex items-center justify-between max-w-min space-x-3 flex-grow-0 flex-shrink-0 py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary focus:outline-none bg-transparent transition-all duration-200 ease-in-out',
                     hasError && 'border-danger'
                 ])}
                 onClick={() => setIsOpen(true)}
