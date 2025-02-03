@@ -1,5 +1,6 @@
 import { tailwindMerge } from '@/utils/tailwindMerge';
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 export interface DrawerProps {
     children: React.ReactNode;
@@ -9,7 +10,7 @@ export interface DrawerProps {
 }
 
 export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsOpen }) => {
-    return (
+    const drawerContent = (
         <div
             className={tailwindMerge([
                 'fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out backdrop-blur-xl',
@@ -37,5 +38,8 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
             ></section>
         </div>
     );
+
+    return createPortal(drawerContent, document.body);
 };
 
+export default Drawer;
