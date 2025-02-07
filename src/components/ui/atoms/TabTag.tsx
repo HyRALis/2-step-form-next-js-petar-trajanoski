@@ -1,6 +1,6 @@
 'use client';
 
-import { tailwindMerge } from '@/utils/tailwindMerge';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React, { useCallback } from 'react';
 
 export interface TabTagProps {

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { CountryPrefixListItem } from './CountryPrefixListItem';
 
-import { fetchCountries } from '@/services/getCountries';
+import { fetchCountries } from '@/services/utils/data/getCountries';
 import { ICountryPhonePrefix } from '@/types';
 
 export interface CountryPrefixList {

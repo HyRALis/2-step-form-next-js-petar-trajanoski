@@ -1,4 +1,4 @@
-import { tailwindMerge } from '@/utils/tailwindMerge';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React from 'react';
 
 export interface ParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {

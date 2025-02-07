@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import React from 'react';
@@ -10,7 +11,7 @@ export interface SearchBarProps {
     getSearchResults: (query: string) => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ getSearchResults }) => {
+export const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(({ getSearchResults }, ref) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -38,6 +39,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ getSearchResults }) => {
             className="flex items-center justify-between py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary bg-transparent transition-all duration-200 ease-in-out"
         >
             <input
+                ref={ref}
                 value={searchQuery}
                 placeholder="Search"
                 className="placeholder:text-light bg-transparent focus:border-none outline-none"
@@ -58,4 +60,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ getSearchResults }) => {
             )}
         </div>
     );
-};
+});
+
+SearchBar.displayName = 'SearchBar';

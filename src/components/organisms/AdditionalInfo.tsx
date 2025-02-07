@@ -4,8 +4,8 @@ import React from 'react';
 
 import { Paragraph } from '../ui/atoms/Paragraph';
 import { TosDrawer } from '../ui/molecules/MarkdownDrawer';
-import { tosMarkdownString } from '@/utils/tosMarkdownString';
-import { privacyPolicyMarkdownString } from '@/utils/privacyPolicyMarkdownString';
+import { tosMarkdownString } from '@/services/utils/tosMarkdownString';
+import { privacyPolicyMarkdownString } from '@/services/utils/privacyPolicyMarkdownString';
 
 export const AdditionalInfo = () => {
     const [isOpenTos, setIsOpenTos] = React.useState(false);

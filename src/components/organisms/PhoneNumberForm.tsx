@@ -9,11 +9,14 @@ import { FormInput } from '../ui/atoms/form/FormInput';
 import { FormErrorMessage } from '../ui/atoms/form/FormErrorMessage';
 import { FormDropdown } from './FormDropdown';
 import { useUserContext } from '@/context/MainContext';
-import { phoneInputValidation } from '@/utils/validation';
+import { phoneInputValidation } from '@/services/utils/validation';
 import { useRouter } from 'next/navigation';
-import { tailwindMerge } from '@/utils/tailwindMerge';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
+import { ANIMATION_DURATION } from '@/services/utils/constants';
 
 export const PhoneNumberForm = () => {
+    const [animateOut, setAnimateOut] = React.useState(false);
     const {
         user,
         errors: { phoneNumberError },
@@ -21,10 +24,8 @@ export const PhoneNumberForm = () => {
         setErrors,
         resetUser
     } = useUserContext();
-
-    const [animateOut, setAnimateOut] = React.useState(false);
-
     const router = useRouter();
+    const { inputRef } = useDelayFocusInput(ANIMATION_DURATION);
 
     const handlePhoneNumberChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,6 +70,7 @@ export const PhoneNumberForm = () => {
                     <div className="flex space-x-1 w-full">
                         <FormDropdown value={user.prefix} hasError={!!phoneNumberError} />
                         <FormInput
+                            ref={inputRef}
                             type="tel"
                             placeholder="07890 123456"
                             className="placeholder:text-light"

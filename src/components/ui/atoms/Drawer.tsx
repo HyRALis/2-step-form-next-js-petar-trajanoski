@@ -1,6 +1,9 @@
-import { tailwindMerge } from '@/utils/tailwindMerge';
-import React from 'react';
+'use client';
+
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import FocusTrap from './FocusTrap';
 
 export interface DrawerProps {
     children: React.ReactNode;
@@ -10,10 +13,26 @@ export interface DrawerProps {
 }
 
 export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsOpen }) => {
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsOpen(false);
+            }
+        };
+
+        if (isOpen) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, setIsOpen]);
+
     const drawerContent = (
         <div
             className={tailwindMerge([
-                'fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out backdrop-blur-xl',
+                'fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out lg:backdrop-blur-xl',
                 isOpen
                     ? 'transition-all opacity-100 duration-200 translate-y-0'
                     : 'transition-all delay-200 opacity-50 translate-y-full'
@@ -25,10 +44,12 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
                     isOpen ? 'translate-y-0' : 'translate-y-full'
                 ])}
             >
-                <div className="relative w-full pb-10 flex flex-col items-center overflow-y-scroll h-screen">
-                    {header}
-                    {children}
-                </div>
+                <FocusTrap isActive={isOpen} onDeactivate={() => setIsOpen(false)}>
+                    <div className="relative w-full pb-10 flex flex-col items-center overflow-y-scroll h-screen">
+                        {header}
+                        {children}
+                    </div>
+                </FocusTrap>
             </section>
             <section
                 className="w-screen h-full cursor-pointer"

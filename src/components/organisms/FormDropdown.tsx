@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
 import { FormDropdownDrawer } from '../ui/molecules/FormDropdownDrawer';
-import { tailwindMerge } from '@/utils/tailwindMerge';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface FormDropdownProps {
     value: string;

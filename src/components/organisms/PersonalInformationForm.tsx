@@ -7,8 +7,8 @@ import { Input } from '../ui/molecules/Input';
 import { Button } from '../ui/atoms/Button';
 import { Paragraph } from '../ui/atoms/Paragraph';
 import { useUserContext } from '@/context/MainContext';
-import { textInputValidation } from '@/utils/validation';
-import { tailwindMerge } from '@/utils/tailwindMerge';
+import { textInputValidation } from '@/services/utils/validation';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export const PersonalInformationForm = () => {
     const {
