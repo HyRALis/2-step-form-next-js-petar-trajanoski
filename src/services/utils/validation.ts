@@ -1,3 +1,5 @@
+import { getValidateNumber } from './data/getValidateNumber';
+
 /**
  * Check if a string is empty or contains only whitespace
  * @param str - The string to check
@@ -48,14 +50,22 @@ const textInputValidation = (text: string) => {
  * @returns A string containing the validation error message if the phone number is invalid, or an empty string if the phone number is valid
  */
 
-const phoneInputValidation = (phone: string) => {
+const phoneInputValidation = async (phone: string, prefix: string, code: string) => {
     if (isEmptyString(phone)) {
         return 'This field is required';
-    } else if (!isNumericString(phone)) {
-        return 'We only accept numbers for phone numbers, no special characters and letters';
-    } else {
-        return '';
     }
+
+    if (!isNumericString(phone)) {
+        return 'We only accept numbers for phone numbers, no special characters and letters';
+    }
+
+    const isValidPhoneNumber = await getValidateNumber(prefix, phone, code);
+
+    if (!isValidPhoneNumber) {
+        return 'Please check the phone number is in the correct format';
+    }
+
+    return '';
 };
 
 export { textInputValidation, phoneInputValidation };

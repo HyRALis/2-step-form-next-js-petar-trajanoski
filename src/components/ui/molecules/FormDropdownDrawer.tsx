@@ -19,8 +19,8 @@ export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, 
     const { setUser } = useUserContext();
     const [searchQuery, setSearchQuery] = React.useState('');
 
-    const handleChange = ({ prefix }: { prefix: string; name: string }) => {
-        setUser((prevUser) => ({ ...prevUser, prefix }));
+    const handleChange = ({ prefix, code }: { prefix: string; name: string; code: string }) => {
+        setUser((prevUser) => ({ ...prevUser, prefix, code }));
         onClose();
     };
 

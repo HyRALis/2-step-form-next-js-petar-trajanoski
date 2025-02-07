@@ -12,7 +12,7 @@ const pins = ['United Kingdom', 'Ireland', 'United States', 'Australia'];
 
 export interface CountryPrefixList {
     searchQuery: string;
-    onChange: (value: { prefix: string; name: string }) => void;
+    onChange: (value: { prefix: string; name: string; code: string }) => void;
 }
 
 export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, onChange }) => {
@@ -68,9 +68,10 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
                             key={country.name}
                             name={country.name}
                             prefix={country.prefix}
+                            code={country.code}
                             src={country.flag}
                             isActive={country.prefix === prefix}
-                            onClick={() => onChange({ prefix: country.prefix, name: country.name })}
+                            onClick={() => onChange({ prefix: country.prefix, name: country.name, code: country.code })}
                         />
                     ))}
                 <Divider />
@@ -82,9 +83,12 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
                                 key={country.name}
                                 name={country.name}
                                 prefix={country.prefix}
+                                code={country.code}
                                 src={country.flag}
                                 isActive={country.prefix === prefix}
-                                onClick={() => onChange({ prefix: country.prefix, name: country.name })}
+                                onClick={() =>
+                                    onChange({ prefix: country.prefix, name: country.name, code: country.code })
+                                }
                             />
                         ))}
                     </div>

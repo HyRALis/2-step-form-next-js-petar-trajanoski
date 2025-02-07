@@ -8,6 +8,7 @@ const defaultUser: UserProps = {
     tab: 1,
     firstName: '',
     lastName: '',
+    code: 'GB',
     prefix: '+44',
     phoneNumber: ''
 };

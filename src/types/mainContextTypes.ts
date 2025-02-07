@@ -2,6 +2,7 @@ export interface UserProps {
     tab: 1 | 2;
     firstName: string;
     lastName: string;
+    code: string;
     prefix: string;
     phoneNumber: string;
 }

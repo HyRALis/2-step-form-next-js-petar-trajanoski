@@ -12,7 +12,7 @@ import { ICountryPhonePrefix, ICountryResponse } from '@/types';
  */
 
 export const fetchCountries = async (): Promise<ICountryPhonePrefix[]> => {
-    const url = 'https://restcountries.com/v3.1/all?fields=name,flags,idd';
+    const url = 'https://restcountries.com/v3.1/all?fields=name,flags,idd,cca2';
 
     try {
         const response = await fetch(url);
@@ -27,6 +27,7 @@ export const fetchCountries = async (): Promise<ICountryPhonePrefix[]> => {
                 (country: ICountryResponse): ICountryPhonePrefix => ({
                     name: country.name?.common ?? 'Unknown',
                     flag: country.flags?.png ?? 'No flag available',
+                    code: country.cca2 ?? 'No code',
                     prefix:
                         country?.idd?.root && country?.idd?.suffixes
                             ? `${country.idd.root}${country.idd.suffixes[0]}`

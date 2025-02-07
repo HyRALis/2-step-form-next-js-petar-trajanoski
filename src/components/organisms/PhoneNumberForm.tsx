@@ -17,6 +17,8 @@ import { ANIMATION_DURATION } from '@/services/utils/constants';
 
 export const PhoneNumberForm = () => {
     const [animateOut, setAnimateOut] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+
     const {
         user,
         errors: { phoneNumberError },
@@ -38,10 +40,14 @@ export const PhoneNumberForm = () => {
         [phoneNumberError, user]
     );
 
-    const handleContinueClick = React.useCallback(() => {
-        const phoneNumberError = phoneInputValidation(user.phoneNumber);
+    const handleContinueClick = React.useCallback(async () => {
+        setIsLoading(true);
+
+        const phoneNumberError = await phoneInputValidation(user.phoneNumber, user.prefix, user.code);
 
         setErrors((prevErrors) => ({ ...prevErrors, phoneNumberError }));
+
+        setIsLoading(false);
 
         if (!phoneNumberError) {
             resetUser();
@@ -49,7 +55,7 @@ export const PhoneNumberForm = () => {
             router.push('/confirmation');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user.phoneNumber]);
+    }, [user.phoneNumber, user.prefix, user.code]);
 
     return (
         <div
@@ -86,12 +92,15 @@ export const PhoneNumberForm = () => {
             <div className="flex flex-col">
                 <AdditionalInfo />
                 <Button
-                    variant="primary"
+                    isLoading={isLoading}
+                    variant={isLoading ? 'secondary' : 'primary'}
+                    disabled={isLoading}
                     className="w-full"
                     size="md"
                     text="Continue"
                     onClick={handleContinueClick}
                     aria-label="continue"
+                    aria-disabled={isLoading}
                 />
             </div>
         </div>

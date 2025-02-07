@@ -1,5 +1,6 @@
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React from 'react';
+import { Spinner } from './Spinner';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'transparent' | 'disabled' | 'icon';
 export type ButtonSize = 'xs' | 'sm' | 'md';
@@ -9,9 +10,18 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     size?: ButtonSize;
     text?: string;
     icon?: React.ReactNode;
+    isLoading?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', text, icon, className, ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({
+    variant = 'primary',
+    size = 'md',
+    text,
+    icon,
+    isLoading,
+    className,
+    ...rest
+}) => {
     const primaryClassName = 'bg-primary hover:bg-primaryDark text-white';
     const secondaryClassName = 'bg-primaryLighter hover: bg-primaryLight text-primary';
     const transparentClassName = 'text-primary hover:bg-darkBlue4';
@@ -42,8 +52,14 @@ export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md'
             ])}`}
             {...rest}
         >
-            {icon}
-            {text}
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                <>
+                    {icon}
+                    {text}
+                </>
+            )}
         </button>
     );
 };

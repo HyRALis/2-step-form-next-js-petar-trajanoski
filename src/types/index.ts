@@ -13,6 +13,7 @@ export interface ICountryNameResponse {
 }
 
 export interface ICountryResponse {
+    cca2: string;
     flags: {
         png: string;
         svg: string;
@@ -34,5 +35,6 @@ export interface ICountryResponse {
 export interface ICountryPhonePrefix {
     name: string;
     prefix: string;
+    code: string;
     flag: string;
 }
