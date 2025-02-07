@@ -13,7 +13,7 @@
 export const getValidateNumber = async (prefix: string, phone: string, code: string): Promise<boolean> => {
     const accessKey = process.env.NEXT_PUBLIC_VALIDATE_NUMBER_ACCESS_KEY;
     const phoneNumber = phone.split(' ').join('');
-    const url = `http://apilayer.net/api/validate?access_key=${accessKey}&number=${phoneNumber}&country_code=${code}&format=1`;
+    const url = `https://apilayer.net/api/validate?access_key=${accessKey}&number=${phoneNumber}&country_code=${code}&format=1`;
 
     if (!accessKey) {
         console.error('Error fetching country data:', 'Invalid accessKey');
