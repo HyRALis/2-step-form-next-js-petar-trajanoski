@@ -63,7 +63,7 @@ export const PersonalInformationForm = () => {
             <div className="flex flex-col pt-6 space-y-4">
                 <Heading text="Some introductions" />
                 <Input
-                    label="First Name"
+                    label="First name"
                     name={'first-name'}
                     value={user.firstName}
                     errorMessage={firstNameError ?? ''}
@@ -71,7 +71,7 @@ export const PersonalInformationForm = () => {
                     onChange={handleFirstNameChange}
                 />
                 <Input
-                    label="Last Name"
+                    label="Last name"
                     name="last-name"
                     value={user.lastName}
                     errorMessage={lastNameError ?? ''}

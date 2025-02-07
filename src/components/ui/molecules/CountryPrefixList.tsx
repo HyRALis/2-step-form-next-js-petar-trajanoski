@@ -55,6 +55,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
                 setCountriesToDisplay(notPinnedCountries);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery, countries]);
 
     return (
