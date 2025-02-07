@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Create an account to get access key on [numverify.com](https://numverify.com/)
+
+Once you get the access key from numverify.com 
+
+create `.env` file like the `.env.example` with the access key you got
+
 First, run the development server:
 
 ```bash
@@ -13,11 +19,6 @@ pnpm dev
 # or
 bun dev
 ```
-Create an account to get access key on [numverify.com](https://numverify.com/)
-
-Once you get the access key from numverify.com 
-
-create `.env` file like the `.env.example` with the access key you got
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
