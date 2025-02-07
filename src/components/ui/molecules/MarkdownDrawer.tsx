@@ -29,7 +29,7 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
                 </HeaderContainer>
             }
         >
-            <div className=" flex flex-col mt-[72px] h-full px-2 max-w-full">
+            <div className=" flex flex-col mt-[72px] h-full px-2 max-w-full overflow-auto">
                 <Markdown
                     components={{
                         h3: ({ node, ...props }) => (

@@ -40,7 +40,7 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
         >
             <section
                 className={tailwindMerge([
-                    'w-full right-1/2 translate-x-1/2 absolute bg-background h-full shadow-xl delay-400 duration-200 ease-in-out transition-all transform max-w-96 lg:max-w-2xl',
+                    'w-full right-1/2 translate-x-1/2 absolute bg-background h-full shadow-xl delay-400 duration-200 ease-in-out transition-all transform max-w-full md:max-w-96 lg:max-w-2xl',
                     isOpen ? 'translate-y-0' : 'translate-y-full'
                 ])}
             >

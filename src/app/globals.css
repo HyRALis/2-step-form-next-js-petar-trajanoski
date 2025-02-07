@@ -6,14 +6,14 @@
     --background: #f6fafe;
     --foreground: #171717;
     --primary: #0d71c9;
-    --primaryDark: #0B61AD;
-    --primaryLight: #D9ECFD;
-    --primaryLighter: #ECF5FE;
+    --primaryDark: #0b61ad;
+    --primaryLight: #d9ecfd;
+    --primaryLighter: #ecf5fe;
     --secondary: #0216261f;
     --danger: #f23148;
     --darkBlue: #021626;
-    --darkBlue4: #0216260A;
-    --darkBlue12: #0216261F;
+    --darkBlue4: #0216260a;
+    --darkBlue12: #0216261f;
     --lightGray: #02162680;
 }
 
@@ -21,4 +21,35 @@ body {
     color: var(--foreground);
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+    .scrollbar {
+        scrollbar-width: 4px;
+        scrollbar-color: var(--primary);
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: var(--darkBlue4);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 100vh;
+        border: 3px solid var(--primary);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--primaryDark);
+    }
+
+    .scrollbar {
+        scrollbar-width: 4px;
+        scrollbar-color: var(--primary);
+    }
 }

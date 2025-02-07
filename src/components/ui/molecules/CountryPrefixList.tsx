@@ -3,7 +3,6 @@
 import React from 'react';
 
 import { CountryPrefixListItem } from './CountryPrefixListItem';
-
 import { fetchCountries } from '@/services/utils/data/getCountries';
 import { ICountryPhonePrefix } from '@/types';
 import { Divider } from '../atoms/Divider';
@@ -60,7 +59,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
 
     return (
         <div className="flex flex-col items-center pt-[72px] w-full overflow-hidden">
-            <div className="flex flex-col items-center w-full overflow-y-auto">
+            <div className="flex flex-col items-center w-full overflow-y-auto scrollbar">
                 {pinnedCountries.length > 0 &&
                     searchQuery === '' &&
                     pinnedCountries.map((country) => (
