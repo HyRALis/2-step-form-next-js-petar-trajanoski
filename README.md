@@ -13,6 +13,11 @@ pnpm dev
 # or
 bun dev
 ```
+Create an account to get access key on [numverify.com](https://numverify.com/)
+
+Once you get the access key from numverify.com 
+
+create `.env` file like the `.env.example` with the access key you got
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -34,3 +39,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Important notes
+
+If you want to completely test the application please go to [the deployed version on Vercel.](https://2-step-form-next-js-petar-trajanoski.vercel.app/)
+If you want to test the app locally you will to need to create `.env` file like the `.env.example` and [create and access key on numverify.com](https://numverify.com/)
