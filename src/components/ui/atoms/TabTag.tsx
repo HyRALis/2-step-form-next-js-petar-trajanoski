@@ -23,6 +23,8 @@ export const TabTag: React.FC<TabTagProps> = ({ text, isActive, onClick }) => {
                 onClick ? 'cursor-pointer' : 'cursor-default',
                 isActive && activeClass
             ])}`}
+            disabled={!!onClick}
+            aria-disabled={!!onClick}
             onClick={handleOnClick}
         >
             {text}
