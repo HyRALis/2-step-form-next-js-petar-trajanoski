@@ -3,16 +3,21 @@ import React from 'react';
 import { FlagImage } from '../atoms/FlagImage';
 import { ICountryPhonePrefix } from '@/types';
 import { Paragraph } from '../atoms/Paragraph';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface FlagListItemProps extends Omit<ICountryPhonePrefix, 'flag'> {
     src: string;
     onClick: ({ name, prefix }: { name: string; prefix: string }) => void;
+    isActive?: boolean;
 }
 
-export const CountryPrefixListItem: React.FC<FlagListItemProps> = ({ name, prefix, src, onClick }) => {
+export const CountryPrefixListItem: React.FC<FlagListItemProps> = ({ name, prefix, src, onClick, isActive }) => {
     return (
         <li
-            className="w-full flex items-center space-x-2 px-6 py-4 bg-transparent hover:bg-darkBlue4 cursor-pointer"
+            className={tailwindMerge([
+                'w-full flex items-center space-x-2 px-6 py-4 cursor-pointer',
+                isActive ? 'bg-darkBlue4' : 'bg-transparent'
+            ])}
             onClick={() => onClick({ name, prefix })}
         >
             <div className="w-20 flex items-center space-x-2 flex-shrink-0 flex-grow-0">
