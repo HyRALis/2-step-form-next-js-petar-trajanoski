@@ -1,9 +1,11 @@
 'use client';
 
+import React from 'react';
+import { createPortal } from 'react-dom';
+
 import { ANIMATION_DURATION } from '@/services/utils/constants';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import FocusTrap from './FocusTrap';
 
 export interface DrawerProps {
     children: React.ReactNode;
@@ -15,7 +17,7 @@ export interface DrawerProps {
 export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsOpen }) => {
     const [closeDrawer, setCloseDrawer] = React.useState(true);
 
-    useEffect(() => {
+    React.useEffect(() => {
         window.scrollTo(0, 0);
         document.body.scrollTop = 0;
 
@@ -45,14 +47,10 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
     }, [isOpen, setIsOpen]);
 
     const drawerContent = (
-        <div
-            className={tailwindMerge([
-                'absolute top-0 left-0 w-full h-screen bg-darkBlue12 flex flex-col items-center transition-all duration-200 overflow-hidden'
-            ])}
-            onClick={(e) => {
-                e.stopPropagation();
-                setIsOpen(false);
-            }}
+        <FocusTrap
+            isActive={closeDrawer}
+            onDeactivate={() => setIsOpen(false)}
+            className="absolute top-0 left-0 w-full h-screen flex flex-col items-center transition-all duration-200 overflow-hidden"
         >
             <div
                 className={tailwindMerge(
@@ -60,12 +58,19 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
                     isOpen ? 'animate-slideInFromBottom' : 'animate-slideOutToBottom'
                 )}
             >
-                <div className="relative w-full h-full bg-background flex flex-col items-center">
+                <div className="relative w-screen h-full bg-background flex flex-col items-center max-w-full md:max-w-96 lg:max-w-2xl">
                     {header}
                     {children}
                 </div>
             </div>
-        </div>
+            <div
+                className="absolute top-0 left-0 w-screen h-screen bg-darkBlue12 z-30"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setIsOpen(false);
+                }}
+            ></div>
+        </FocusTrap>
     );
 
     return !closeDrawer ? createPortal(drawerContent, document.body) : null;

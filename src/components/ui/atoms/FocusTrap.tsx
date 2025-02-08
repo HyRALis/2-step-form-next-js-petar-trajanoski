@@ -1,14 +1,15 @@
 'use client'
 
+import { ANIMATION_DURATION } from '@/services/utils/constants';
 import { useEffect, useRef } from 'react';
 import { PropsWithChildren } from 'react';
 
-interface FocusTrapProps {
+interface FocusTrapProps extends React.HTMLAttributes<HTMLDivElement> {
     isActive: boolean;
     onDeactivate?: () => void;
 }
 
-export const FocusTrap = ({ isActive, onDeactivate, children }: PropsWithChildren<FocusTrapProps>) => {
+export const FocusTrap = ({ isActive, onDeactivate, children, ...rest }: PropsWithChildren<FocusTrapProps>) => {
     const focusTrapRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -47,19 +48,26 @@ export const FocusTrap = ({ isActive, onDeactivate, children }: PropsWithChildre
         };
 
         const trapFocus = () => {
-            console.log(firstElement);
             firstElement.focus();
         };
 
         document.addEventListener('keydown', handleKeyDown);
-        trapFocus();
+
+        const timer = setTimeout(() => {
+            trapFocus();
+        }, ANIMATION_DURATION + 100);
 
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
+            clearTimeout(timer);
         };
     }, [isActive, onDeactivate]);
 
-    return <div ref={focusTrapRef}>{children}</div>;
+    return (
+        <div ref={focusTrapRef} {...rest}>
+            {children}
+        </div>
+    );
 };
 
 export default FocusTrap;

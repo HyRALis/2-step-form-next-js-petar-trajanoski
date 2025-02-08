@@ -5,6 +5,7 @@ import React from 'react';
 import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
 import { FormDropdownDrawer } from '../ui/molecules/FormDropdownDrawer';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import { ANIMATION_DURATION } from '@/services/utils/constants';
 
 export interface FormDropdownProps {
     value: string;
@@ -13,6 +14,23 @@ export interface FormDropdownProps {
 
 export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError }) => {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [closeDrawer, setCloseDrawer] = React.useState(true);
+
+    React.useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
+
+        if (isOpen) {
+            setCloseDrawer(false);
+        } else {
+            timer = setTimeout(() => {
+                setCloseDrawer(true);
+            }, ANIMATION_DURATION - 50);
+        }
+
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [isOpen]);
 
     return (
         <>
@@ -26,7 +44,7 @@ export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError }) =
                 <span>{value}</span>
                 <ChevronDownIcon />
             </button>
-            <FormDropdownDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
+            {!closeDrawer && <FormDropdownDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />}
         </>
     );
 };
