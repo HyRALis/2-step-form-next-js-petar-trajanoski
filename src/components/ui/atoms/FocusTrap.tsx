@@ -46,7 +46,10 @@ export const FocusTrap = ({ isActive, onDeactivate, children }: PropsWithChildre
             }
         };
 
-        const trapFocus = () => firstElement.focus();
+        const trapFocus = () => {
+            console.log(firstElement);
+            firstElement.focus();
+        };
 
         document.addEventListener('keydown', handleKeyDown);
         trapFocus();

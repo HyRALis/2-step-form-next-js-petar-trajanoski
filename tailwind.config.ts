@@ -23,12 +23,22 @@ export default {
                 lightGray: 'var(--lightGray)'
             },
             animation: {
-                slideInFromLeft: 'slideInFromLeft 0.2s ease-out',
-                slideOutToLeft: 'slideOutToLeft 0.2s ease-out',
-                slideInFromRight: 'slideInFromRight 0.2s ease-out',
-                slideOutToRight: 'slideOutToRight 0.2s ease-out'
+                slideInFromBottom: 'slideInFromBottom 0.2s ease-in-out',
+                slideOutToBottom: 'slideOutToBottom 0.2s ease-in-out',
+                slideInFromLeft: 'slideInFromLeft 0.2s ease-in-out',
+                slideOutToLeft: 'slideOutToLeft 0.2s ease-in-out',
+                slideInFromRight: 'slideInFromRight 0.2s ease-in-out',
+                slideOutToRight: 'slideOutToRight 0.2s ease-in-out'
             },
             keyframes: {
+                slideInFromBottom: {
+                    '0%': { transform: 'translateY(100%)', opacity: '0%' },
+                    '100%': { transform: 'translateY(0)', opacity: '100%' }
+                },
+                slideOutToBottom: {
+                    '0%': { transform: 'translateY(0)', opacity: '0%' },
+                    '100%': { transform: 'translateY(100%)', opacity: '100%' }
+                },
                 slideInFromLeft: {
                     '0%': { transform: 'translateX(-100%)', opacity: '0%' },
                     '100%': { transform: 'translateX(0)', opacity: '100%' }

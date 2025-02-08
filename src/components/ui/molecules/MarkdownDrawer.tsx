@@ -24,26 +24,28 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
             isOpen={isOpen}
             setIsOpen={onClose}
             header={
-                <HeaderContainer className="flex-row-reverse">
+                <HeaderContainer className="flex-row-reverse max-w-full md:max-w-96 lg:max-w-2xl">
                     <Button variant="icon" icon={<TimesIcon />} onClick={() => onClose()} />
                 </HeaderContainer>
             }
         >
-            <div className=" flex flex-col mt-[72px] h-full px-2 max-w-full overflow-auto">
-                <Markdown
-                    components={{
-                        h3: ({ node, ...props }) => (
-                            <Heading className="mb-4" text={props.children as string} {...props} />
-                        ),
-                        p: ({ node, ...props }) => (
-                            <Paragraph className="mb-4 last-of-type:mb-0" {...props}>
-                                {props.children}
-                            </Paragraph>
-                        )
-                    }}
-                >
-                    {markdownText}
-                </Markdown>
+            <div className="pt-[72px] px-2 max-w-full h-screen">
+                <div className="flex flex-col w-full h-full flex-grow-0 flex-shrink-0 overflow-auto">
+                    <Markdown
+                        components={{
+                            h3: ({ node, ...props }) => (
+                                <Heading className="mb-4" text={props.children as string} {...props} />
+                            ),
+                            p: ({ node, ...props }) => (
+                                <Paragraph className="mb-4 last-of-type:mb-0" {...props}>
+                                    {props.children}
+                                </Paragraph>
+                            )
+                        }}
+                    >
+                        {markdownText}
+                    </Markdown>
+                </div>
             </div>
         </Drawer>
     );

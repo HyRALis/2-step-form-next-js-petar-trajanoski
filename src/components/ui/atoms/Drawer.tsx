@@ -1,9 +1,9 @@
 'use client';
 
+import { ANIMATION_DURATION } from '@/services/utils/constants';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import FocusTrap from './FocusTrap';
 
 export interface DrawerProps {
     children: React.ReactNode;
@@ -13,7 +13,14 @@ export interface DrawerProps {
 }
 
 export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsOpen }) => {
+    const [closeDrawer, setCloseDrawer] = React.useState(true);
+
     useEffect(() => {
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
+
+        let timer: NodeJS.Timeout | null = null;
+
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 setIsOpen(false);
@@ -22,45 +29,46 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
 
         if (isOpen) {
             window.addEventListener('keydown', handleKeyDown);
+            setCloseDrawer(false);
+        } else {
+            timer = setTimeout(() => {
+                setCloseDrawer(true);
+            }, ANIMATION_DURATION - 50);
         }
 
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
+            if (timer) {
+                clearTimeout(timer);
+            }
         };
     }, [isOpen, setIsOpen]);
 
     const drawerContent = (
         <div
             className={tailwindMerge([
-                'fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out lg:backdrop-blur-xl',
-                isOpen
-                    ? 'transition-all opacity-100 duration-200 translate-y-0'
-                    : 'transition-all delay-200 opacity-50 translate-y-full'
+                'absolute top-0 left-0 w-full h-screen bg-darkBlue12 flex flex-col items-center transition-all duration-200 overflow-hidden'
             ])}
+            onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+            }}
         >
-            <section
-                className={tailwindMerge([
-                    'w-full right-1/2 translate-x-1/2 absolute bg-background h-full shadow-xl delay-400 duration-200 ease-in-out transition-all transform max-w-full md:max-w-96 lg:max-w-2xl',
-                    isOpen ? 'translate-y-0' : 'translate-y-full'
-                ])}
+            <div
+                className={tailwindMerge(
+                    ['max-w-full md:max-w-96 lg:max-w-2xl h-full z-50'],
+                    isOpen ? 'animate-slideInFromBottom' : 'animate-slideOutToBottom'
+                )}
             >
-                <FocusTrap isActive={isOpen} onDeactivate={() => setIsOpen(false)}>
-                    <div className="relative w-full pb-10 flex flex-col items-center overflow-y-scroll h-screen">
-                        {header}
-                        {children}
-                    </div>
-                </FocusTrap>
-            </section>
-            <section
-                className="w-screen h-full cursor-pointer"
-                onClick={() => {
-                    setIsOpen(false);
-                }}
-            ></section>
+                <div className="relative w-full h-full bg-background flex flex-col items-center">
+                    {header}
+                    {children}
+                </div>
+            </div>
         </div>
     );
 
-    return createPortal(drawerContent, document.body);
+    return !closeDrawer ? createPortal(drawerContent, document.body) : null;
 };
 
 export default Drawer;
