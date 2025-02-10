@@ -1,18 +1,18 @@
 'use client'
 
-import { ANIMATION_DURATION } from '@/services/utils/constants';
-import { useEffect, useRef } from 'react';
-import { PropsWithChildren } from 'react';
+import React from 'react';
+
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 interface FocusTrapProps extends React.HTMLAttributes<HTMLDivElement> {
     isActive: boolean;
     onDeactivate?: () => void;
 }
 
-export const FocusTrap = ({ isActive, onDeactivate, children, ...rest }: PropsWithChildren<FocusTrapProps>) => {
-    const focusTrapRef = useRef<HTMLDivElement | null>(null);
+export const FocusTrap = ({ isActive, onDeactivate, children, ...rest }: React.PropsWithChildren<FocusTrapProps>) => {
+    const focusTrapRef = React.useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (!isActive || !focusTrapRef.current) return;
 
         const focusableElements = Array.from(
@@ -55,7 +55,7 @@ export const FocusTrap = ({ isActive, onDeactivate, children, ...rest }: PropsWi
 
         const timer = setTimeout(() => {
             trapFocus();
-        }, ANIMATION_DURATION + 100);
+        }, ANIMATION_DURATION_MILLISECONDS + 100);
 
         return () => {
             document.removeEventListener('keydown', handleKeyDown);

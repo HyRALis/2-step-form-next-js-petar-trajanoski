@@ -1,1 +1,2 @@
-export const ANIMATION_DURATION = 200;
+export const ANIMATION_DURATION_MILLISECONDS: number = 200;
+export const ANIMATION_DURATION_SECONDS: number = 0.2;

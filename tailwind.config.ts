@@ -25,10 +25,10 @@ export default {
             animation: {
                 slideInFromBottom: 'slideInFromBottom 0.2s ease-in-out',
                 slideOutToBottom: 'slideOutToBottom 0.2s ease-in-out',
-                slideInFromLeft: 'slideInFromLeft 0.8s ease-in-out',
-                slideOutToLeft: 'slideOutToLeft 0.8s ease-in-out',
-                slideInFromRight: 'slideInFromRight 0.8s ease-in-out',
-                slideOutToRight: 'slideOutToRight 0.8s ease-in-out'
+                slideInFromLeft: 'slideInFromLeft 0.2s ease-in-out',
+                slideOutToLeft: 'slideOutToLeft 0.2s ease-in-out',
+                slideInFromRight: 'slideInFromRight 0.2s ease-in-out',
+                slideOutToRight: 'slideOutToRight 0.2s ease-in-out'
             },
             keyframes: {
                 slideInFromBottom: {

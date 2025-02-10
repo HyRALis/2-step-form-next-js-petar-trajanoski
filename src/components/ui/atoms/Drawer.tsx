@@ -3,7 +3,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-import { ANIMATION_DURATION } from '@/services/utils/constants';
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import FocusTrap from './FocusTrap';
 
@@ -35,7 +35,7 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
         } else {
             timer = setTimeout(() => {
                 setCloseDrawer(true);
-            }, ANIMATION_DURATION - 50);
+            }, ANIMATION_DURATION_MILLISECONDS - 50);
         }
 
         return () => {

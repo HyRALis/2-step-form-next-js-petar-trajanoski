@@ -10,7 +10,7 @@ import { CountryPrefixList } from './CountryPrefixList';
 import { HeaderContainer } from '../atoms/HeaderContainer';
 import { useUserContext } from '@/context/MainContext';
 import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
-import { ANIMATION_DURATION } from '@/services/utils/constants';
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 export interface FormDropdownDrawerProps {
     isOpen: boolean;
@@ -20,7 +20,11 @@ export interface FormDropdownDrawerProps {
 export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, onClose }) => {
     const { setUser } = useUserContext();
     const [searchQuery, setSearchQuery] = React.useState('');
-    const { inputRef } = useDelayFocusInput(ANIMATION_DURATION + 100);
+    const { inputRef } = useDelayFocusInput({
+        delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,
+        focusOnFirstRender: true,
+        activeTrigger: true
+    });
 
     const handleChange = ({ prefix, code }: { prefix: string; name: string; code: string }) => {
         setUser((prevUser) => ({ ...prevUser, prefix, code }));

@@ -13,8 +13,14 @@ import { useUserContext } from '@/context/MainContext';
 import { phoneInputValidation } from '@/services/utils/validation';
 import { useRouter } from 'next/navigation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
-export const PhoneNumberForm = () => {
+export interface PhoneNumberFormProps {
+    isActive: boolean;
+}
+
+export const PhoneNumberForm: React.FC<PhoneNumberFormProps> = ({ isActive }) => {
     const [isLoading, setIsLoading] = React.useState(false);
 
     const {
@@ -25,7 +31,11 @@ export const PhoneNumberForm = () => {
         resetUser
     } = useUserContext();
     const router = useRouter();
-    // const { inputRef } = useDelayFocusInput(1000);
+    const { inputRef } = useDelayFocusInput({
+        delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,
+        focusOnFirstRender: false,
+        activeTrigger: isActive
+    });
 
     const handlePhoneNumberChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +74,7 @@ export const PhoneNumberForm = () => {
                     <div className="flex space-x-1 w-full">
                         <FormDropdown value={user.prefix} hasError={!!phoneNumberError} />
                         <FormInput
-                            // ref={inputRef}
+                            ref={inputRef}
                             type="tel"
                             placeholder="07890 123456"
                             className="placeholder:text-light"

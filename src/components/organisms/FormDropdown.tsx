@@ -5,7 +5,7 @@ import React from 'react';
 import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
 import { FormDropdownDrawer } from '../ui/molecules/FormDropdownDrawer';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { ANIMATION_DURATION } from '@/services/utils/constants';
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 export interface FormDropdownProps {
     value: string;
@@ -24,7 +24,7 @@ export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError }) =
         } else {
             timer = setTimeout(() => {
                 setCloseDrawer(true);
-            }, ANIMATION_DURATION - 50);
+            }, ANIMATION_DURATION_MILLISECONDS - 50);
         }
 
         return () => {
