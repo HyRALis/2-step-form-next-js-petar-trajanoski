@@ -42,7 +42,7 @@ export const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(({ g
                 ref={ref}
                 value={searchQuery}
                 placeholder="Search"
-                className="placeholder:text-light bg-transparent focus:border-none outline-none"
+                className="w-full placeholder:text-light bg-transparent focus:border-none outline-none"
                 onFocus={onInputFocus}
                 onBlur={onInputFocusOut}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
