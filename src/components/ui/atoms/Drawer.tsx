@@ -64,7 +64,10 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
                 </div>
             </div>
             <div
-                className="absolute top-0 left-0 w-screen h-screen bg-darkBlue12 z-30"
+                className={tailwindMerge([
+                    'absolute top-0 left-0 w-screen h-screen bg-darkBlue12 z-30 backdrop-blur-xl',
+                    isOpen ? 'animate-slideInFromBottom' : 'animate-slideOutToBottom'
+                ])}
                 onClick={(e) => {
                     e.stopPropagation();
                     setIsOpen(false);

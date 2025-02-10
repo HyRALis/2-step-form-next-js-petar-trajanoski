@@ -74,25 +74,20 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
                             onClick={() => onChange({ prefix: country.prefix, name: country.name, code: country.code })}
                         />
                     ))}
-                <Divider />
+                {pinnedCountries.length > 0 && searchQuery === '' && <Divider />}
 
-                {countriesToDisplay.length > 0 && (
-                    <div className="flex flex-col items-center w-full">
-                        {countriesToDisplay.map((country) => (
-                            <CountryPrefixListItem
-                                key={country.name}
-                                name={country.name}
-                                prefix={country.prefix}
-                                code={country.code}
-                                src={country.flag}
-                                isActive={country.prefix === prefix}
-                                onClick={() =>
-                                    onChange({ prefix: country.prefix, name: country.name, code: country.code })
-                                }
-                            />
-                        ))}
-                    </div>
-                )}
+                {countriesToDisplay.length > 0 &&
+                    countriesToDisplay.map((country) => (
+                        <CountryPrefixListItem
+                            key={country.name}
+                            name={country.name}
+                            prefix={country.prefix}
+                            code={country.code}
+                            src={country.flag}
+                            isActive={country.prefix === prefix}
+                            onClick={() => onChange({ prefix: country.prefix, name: country.name, code: country.code })}
+                        />
+                    ))}
             </div>
         </div>
     );
