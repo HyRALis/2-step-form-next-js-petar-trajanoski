@@ -29,9 +29,10 @@ export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownT
                 </HeaderContainer>
             }
         >
-            <div className="pt-[72px] px-2 max-w-full h-screen">
+            <div className="px-2 max-w-full h-screen">
                 <div className="flex flex-col w-full h-full flex-grow-0 flex-shrink-0 overflow-auto">
                     <Markdown
+                        className={'mt-[72px]'}
                         components={{
                             h3: ({ node, ...props }) => (
                                 <Heading className="mb-4" text={props.children as string} {...props} />

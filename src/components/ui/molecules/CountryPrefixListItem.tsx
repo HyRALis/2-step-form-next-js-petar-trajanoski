@@ -15,7 +15,7 @@ export const CountryPrefixListItem: React.FC<FlagListItemProps> = ({ name, prefi
     return (
         <li
             className={tailwindMerge([
-                'w-full flex items-center space-x-2 px-6 py-4 cursor-pointer',
+                'w-full flex items-center space-x-2 px-6 py-4 cursor-pointer first-of-type:mt-[72px]',
                 isActive ? 'bg-darkBlue4' : 'bg-transparent'
             ])}
             onClick={() => onClick({ name, prefix, code })}

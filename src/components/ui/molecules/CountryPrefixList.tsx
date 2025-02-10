@@ -59,7 +59,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
     }, [searchQuery, countries]);
 
     return (
-        <div className="flex flex-col items-center pt-[72px] w-full overflow-hidden">
+        <div className="flex flex-col items-center w-full overflow-hidden">
             <div className="flex flex-col items-center w-full overflow-y-auto scrollbar">
                 {pinnedCountries.length > 0 &&
                     searchQuery === '' &&
