@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react';
 
 import { AdditionalInfo } from './AdditionalInfo';
@@ -12,11 +13,8 @@ import { useUserContext } from '@/context/MainContext';
 import { phoneInputValidation } from '@/services/utils/validation';
 import { useRouter } from 'next/navigation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
-import { ANIMATION_DURATION } from '@/services/utils/constants';
 
 export const PhoneNumberForm = () => {
-    const [animateOut, setAnimateOut] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
 
     const {
@@ -27,7 +25,7 @@ export const PhoneNumberForm = () => {
         resetUser
     } = useUserContext();
     const router = useRouter();
-    const { inputRef } = useDelayFocusInput(ANIMATION_DURATION);
+    // const { inputRef } = useDelayFocusInput(1000);
 
     const handlePhoneNumberChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,17 +56,7 @@ export const PhoneNumberForm = () => {
     }, [user.phoneNumber, user.prefix, user.code]);
 
     return (
-        <div
-            className={tailwindMerge([
-                'flex flex-col w-full transform transition-all duration-200 ease-in-out',
-                animateOut ? 'animate-slideOutToRight' : 'animate-slideInFromRight'
-            ])}
-            onAnimationEnd={() => {
-                if (animateOut) {
-                    setAnimateOut(false);
-                }
-            }}
-        >
+        <div className={tailwindMerge(['flex-col w-full flex-shrink-0'])}>
             <div className="flex flex-col space-y-4 py-6">
                 <Heading text="Let's validate your number" />
                 <div className="flex flex-col space-y-1 w-full">
@@ -76,7 +64,7 @@ export const PhoneNumberForm = () => {
                     <div className="flex space-x-1 w-full">
                         <FormDropdown value={user.prefix} hasError={!!phoneNumberError} />
                         <FormInput
-                            ref={inputRef}
+                            // ref={inputRef}
                             type="tel"
                             placeholder="07890 123456"
                             className="placeholder:text-light"

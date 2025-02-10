@@ -54,12 +54,7 @@ export const PersonalInformationForm = () => {
     }, [user.firstName, user.lastName]);
 
     return (
-        <div
-            className={tailwindMerge([
-                'flex flex-col w-full transform transition-all duration-200 ease-in-out',
-                'animate-slideInFromLeft'
-            ])}
-        >
+        <div className={tailwindMerge(['flex flex-col w-full flex-shrink-0'])}>
             <div className="flex flex-col pt-6 space-y-4">
                 <Heading text="Some introductions" />
                 <Input
