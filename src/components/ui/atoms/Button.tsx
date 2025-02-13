@@ -22,31 +22,25 @@ export const Button: React.FC<ButtonProps> = ({
     className,
     ...rest
 }) => {
-    const primaryClassName = 'bg-primary hover:bg-primaryDark text-white';
-    const secondaryClassName = 'bg-primaryLighter hover: bg-primaryLight text-primary';
-    const transparentClassName = 'text-primary hover:bg-darkBlue4';
-    const iconClassName = 'text-darkBlue hover:bg-darkBlue4';
+    const variantClasses = {
+        primary: 'bg-primary hover:bg-primaryDark text-white',
+        secondary: 'bg-primaryLighter hover: bg-primaryLight text-primary',
+        transparent: 'text-primary hover:bg-darkBlue4',
+        icon: 'text-darkBlue hover:bg-darkBlue4',
+        disabled: 'bg-gray-400 text-gray-700 cursor-not-allowed'
+    };
 
-    const defaultSize = 'text-base leading-6 px-6 py-4';
-    const smallSize = 'text-sm leading-5 px-5 py-[14px]';
-    const extraSmallSize = 'text-xs leading-4 px-4 py-3';
-
-    const variantClassName =
-        variant === 'icon'
-            ? iconClassName
-            : variant === 'secondary'
-            ? secondaryClassName
-            : variant === 'transparent'
-            ? transparentClassName
-            : primaryClassName;
-
-    const iconSize = size === 'xs' ? extraSmallSize : size === 'sm' ? smallSize : defaultSize;
+    const sizeClasses = {
+        xs: 'text-base leading-6 px-6 py-4',
+        sm: 'text-sm leading-5 px-5 py-[14px]',
+        md: 'text-base leading-6 px-6 py-4'
+    };
 
     return (
         <button
             className={`${tailwindMerge([
-                variantClassName,
-                iconSize,
+                variantClasses[variant],
+                sizeClasses[size],
                 'flex items-center justify-center space-x-2 rounded-full font-bold font-[family-name:var(--font-hanken-grotesk)] hover:-translate-y-[1px] transition-all duration-200 ease-in-out',
                 className
             ])}`}
