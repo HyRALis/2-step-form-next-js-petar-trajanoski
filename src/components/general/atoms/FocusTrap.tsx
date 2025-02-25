@@ -69,5 +69,3 @@ export const FocusTrap = ({ isActive, onDeactivate, children, ...rest }: React.P
         </div>
     );
 };
-
-export default FocusTrap;
