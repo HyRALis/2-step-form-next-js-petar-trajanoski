@@ -1,18 +1,19 @@
 'use client';
 
+import { CheckmarkIcon } from '@/assets/icons/CheckmarkIcon';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React, { useCallback } from 'react';
 
 export interface TabTagProps {
     text: string;
-    isActive?: boolean;
+    variant?: 'default' | 'active' | 'finished';
     onClick?: () => void;
 }
 
-export const TabTag: React.FC<TabTagProps> = ({ text, isActive, onClick }) => {
+export const TabTag: React.FC<TabTagProps> = ({ text, variant = 'default', onClick }) => {
     const handleOnClick = useCallback(() => {
-        if (onClick && !isActive) onClick();
-    }, [isActive, onClick]);
+        if (onClick && variant !== 'active') onClick();
+    }, [variant, onClick]);
 
     const activeClass = 'bg-primary text-white';
 
@@ -21,13 +22,13 @@ export const TabTag: React.FC<TabTagProps> = ({ text, isActive, onClick }) => {
             className={`${tailwindMerge([
                 'min-w-8 h-8 flex items-center justify-center rounded-full bg-darkBlue4 text-darkBlue12 font-[family-name:var(--font-eb-garamond)] font-bold text-base transition-all duration-200 ease-in-out',
                 onClick ? 'cursor-pointer' : 'cursor-default',
-                isActive && activeClass
+                (variant === 'active' || variant === 'finished') && activeClass
             ])}`}
             disabled={!!onClick}
             aria-disabled={!!onClick}
             onClick={handleOnClick}
         >
-            {text}
+            {variant === 'finished' ? <CheckmarkIcon /> : text}
         </button>
     );
 };

@@ -17,7 +17,7 @@ export const FormContainer = () => {
     return (
         <Container className="pt-[72px] mb-6 h-full max-w-96 lg:max-w-2xl overflow-hidden">
             <div className="flex justify-center items-center my-[9px]">
-                <Tabs tabs={[1, 2]} />
+                <Tabs tabs={[1, 2]} activeTab={tab} />
             </div>
             <MultiViewSequencer
                 views={[

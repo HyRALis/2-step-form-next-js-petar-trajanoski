@@ -1,24 +1,26 @@
-'use client';
-
 import React from 'react';
-
-import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { TabTag } from '../atoms/TabTag';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface TabsProps {
     tabs: number[];
+    activeTab: number;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
-    const { user } = useRegistrationFormContext();
+export const Tabs: React.FC<TabsProps> = ({ tabs, activeTab }) => {
+    const determineVariant = (tab: number) => {
+        if (tab === activeTab) return 'active';
+        if (tab < activeTab) return 'finished';
+        return 'default';
+    };
 
     return (
         <div className="flex justify-center items-center space-x-[4px]">
             {tabs.map((tab, index) => {
                 return (
                     <React.Fragment key={tab}>
-                        {index !== 0 && <TabsSeparator />}
-                        <TabTag text={tab.toString()} isActive={user.tab === tab} />
+                        {index !== 0 && <TabsSeparator isActive={tab <= activeTab} />}
+                        <TabTag text={tab.toString()} variant={determineVariant(tab)} />
                     </React.Fragment>
                 );
             })}
@@ -26,6 +28,10 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
     );
 };
 
-const TabsSeparator = () => {
-    return <div className="w-1 h-1 bg-darkBlue12 rounded-full" />;
+export interface TabsSeparatorProps {
+    isActive?: boolean;
+}
+
+const TabsSeparator: React.FC<TabsSeparatorProps> = ({ isActive }) => {
+    return <div className={tailwindMerge(['w-1 h-1 bg-darkBlue12 rounded-full', isActive && 'bg-primary'])} />;
 };
