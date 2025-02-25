@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
-import './globals.css';
-import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { UserProvider } from '@/context/features/forms/RegistrationFormProvider';
 import { Analytics } from '@vercel/analytics/next';
+
+import './globals.css';
+
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import { RegistrationFormProvider } from '@/context/features/forms/RegistrationFormProvider';
 
 const ebGaramond = EB_Garamond({
     variable: '--font-eb-garamond',
@@ -36,7 +38,7 @@ export default function RootLayout({
                 ])}
             >
                 <Analytics />
-                <UserProvider>{children}</UserProvider>
+                <RegistrationFormProvider>{children}</RegistrationFormProvider>
             </body>
         </html>
     );
