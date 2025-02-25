@@ -19,12 +19,10 @@ export const MultiViewSequencer: React.FC<ViewSequencerProps> = ({
     transitionDuration = 500,
     initialMountAnimation = true
 }) => {
-    // Current view state
     const [direction, setDirection] = React.useState<'forward' | 'backward'>('forward');
     const [isTransitioning, setIsTransitioning] = React.useState(false);
     const [previousViewId, setPreviousViewId] = React.useState(currentViewId);
 
-    // Get current view index
     const currentIndex = React.useMemo(
         () => views.findIndex((view) => view.id === currentViewId),
         [currentViewId, views]
@@ -34,7 +32,6 @@ export const MultiViewSequencer: React.FC<ViewSequencerProps> = ({
         [previousViewId, views]
     );
 
-    // Animation for transitioning between views
     const transitions = useTransition(currentViewId, {
         from: initialMountAnimation
             ? {
@@ -62,21 +59,16 @@ export const MultiViewSequencer: React.FC<ViewSequencerProps> = ({
         }
     });
 
-    // Navigate to a specific view
     const navigateToView = React.useCallback(
         (viewId: string) => {
-            console.log({ isTransitioning, viewId, currentViewId });
-
             if (isTransitioning || previousViewId === currentViewId) return;
 
             if (currentIndex === -1 || previousIndex === -1) return;
 
             setIsTransitioning(true);
 
-            // Determine direction
             setDirection(previousIndex > currentIndex ? 'forward' : 'backward');
 
-            // Set the new view
             setPreviousViewId(viewId);
         },
         [currentViewId, currentIndex, views, isTransitioning]
