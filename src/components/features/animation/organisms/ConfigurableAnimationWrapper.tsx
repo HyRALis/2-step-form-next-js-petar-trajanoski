@@ -60,15 +60,12 @@ export const ConfigurableAnimationWrapper: React.FC<ConfigurableWrapperProps> = 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onDestroyed: (item: any) => {
             if (!isVisible && item) {
-                console.log('with item')
                 const timer = setTimeout(() => {
-                    console.log('executed');
                     setShouldRender(false);
                 }, 2000 * 2);
 
                 return () => clearTimeout(timer);
             } else if (isVisible) {
-                console.log('without item')
                 setShouldRender(true);
             }
         }
