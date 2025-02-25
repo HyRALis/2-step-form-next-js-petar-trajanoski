@@ -3,14 +3,15 @@
 import React from 'react';
 
 import { TimesIcon } from '@/assets/icons/TimesIcon';
-import { CountryPrefixList } from '../../features/forms/molecules/CountryPrefixList';
 import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { useDelayFocusInput } from '@/services/hooks/features/forms/useDelayFocusInput';
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
+
+import { CountryPrefixList } from '../../features/forms/molecules/CountryPrefixList';
+import { Button } from '../atoms/Button';
 import { Drawer } from '../atoms/Drawer';
 import { HeaderContainer } from '../atoms/HeaderContainer';
 import { SearchBar } from '../atoms/SearchBar';
-import { Button } from '../atoms/Button';
 
 export interface FormDropdownDrawerProps {
     isOpen: boolean;

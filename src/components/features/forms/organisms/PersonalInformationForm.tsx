@@ -2,13 +2,15 @@
 
 import React from 'react';
 
-import { Heading } from '../../../general/atoms/Heading';
-import { Input } from '../molecules/Input';
-import { Button } from '../../../general/atoms/Button';
-import { Paragraph } from '../../../general/atoms/Paragraph';
 import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
-import { textInputValidation } from '@/services/utils/validation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
+import { textInputValidation } from '@/services/utils/validation';
+
+import { Button } from '../../../general/atoms/Button';
+import { Heading } from '../../../general/atoms/Heading';
+import { Paragraph } from '../../../general/atoms/Paragraph';
+import { Input } from '../molecules/Input';
+
 
 export const PersonalInformationForm = () => {
     const {

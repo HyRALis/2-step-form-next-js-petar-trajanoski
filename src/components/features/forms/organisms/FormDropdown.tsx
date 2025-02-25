@@ -2,10 +2,11 @@
 
 import React from 'react';
 
-import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
-import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 import { FormDropdownDrawer } from '@/components/general/molecules/FormDropdownDrawer';
+
+import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface FormDropdownProps {
     value: string;

@@ -1,7 +1,8 @@
 import React from 'react';
-import { FormLabel } from '../atoms/FormLabel';
-import { FormInput } from '../atoms/FormInput';
+
 import { FormErrorMessage } from '../atoms/FormErrorMessage';
+import { FormInput } from '../atoms/FormInput';
+import { FormLabel } from '../atoms/FormLabel';
 
 export interface InputProps {
     label: string;

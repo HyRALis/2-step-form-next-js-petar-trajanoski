@@ -1,7 +1,8 @@
 'use client';
 
+import { useTransition, animated, SpringConfig } from '@react-spring/web';
 import React from 'react';
-import { useTransition, animated, SpringConfig, } from '@react-spring/web';
+
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 type AnimationConfig = {

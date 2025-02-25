@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-import { Paragraph } from '../atoms/Paragraph';
-import { tosMarkdownString } from '@/services/utils/tosMarkdownString';
 import { privacyPolicyMarkdownString } from '@/services/utils/privacyPolicyMarkdownString';
+import { tosMarkdownString } from '@/services/utils/tosMarkdownString';
+
+import { Paragraph } from '../atoms/Paragraph';
 import { MarkdownDrawer } from '../molecules/MarkdownDrawer';
 
 export const AdditionalInfo = () => {

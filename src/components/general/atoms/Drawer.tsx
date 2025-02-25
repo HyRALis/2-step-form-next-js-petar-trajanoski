@@ -3,10 +3,12 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
-import { FocusTrap } from './FocusTrap';
 import { ConfigurableAnimationWrapper } from '@/components/features/animation/organisms/ConfigurableAnimationWrapper';
+
+import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 import { SLIDE_UP } from '@/services/utils/constants/animationPresets';
+
+import { FocusTrap } from './FocusTrap';
 
 export interface DrawerProps {
     children: React.ReactNode;

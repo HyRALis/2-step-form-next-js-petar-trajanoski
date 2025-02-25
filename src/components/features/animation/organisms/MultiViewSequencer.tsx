@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
 import { useTransition, animated, config } from '@react-spring/web';
+import React from 'react';
 
 type ViewSequencerProps = {
     views: {

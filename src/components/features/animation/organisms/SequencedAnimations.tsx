@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
 import { useTransition, animated, SpringConfig } from '@react-spring/web';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Animation configuration type
 type AnimationConfig = {

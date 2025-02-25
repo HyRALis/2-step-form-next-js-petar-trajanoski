@@ -1,6 +1,8 @@
 import React from 'react';
-import { TabTag } from '../atoms/TabTag';
+
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
+
+import { TabTag } from '../atoms/TabTag';
 
 export interface TabsProps {
     tabs: number[];

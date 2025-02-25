@@ -1,20 +1,21 @@
-import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import React from 'react';
 
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
+
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-    text: string;
+  text: string;
 }
 
 export const Heading: React.FC<HeadingProps> = ({ text, className, ...rest }) => {
-    return (
-        <h3
-            className={`${tailwindMerge([
-                className,
-                'text-darkBlue text-xl font-bold font-[family-name:var(--font-eb-garamond)]'
-            ])}`}
-            {...rest}
-        >
-            {text}
-        </h3>
-    );
+  return (
+    <h3
+      className={`${tailwindMerge([
+        className,
+        'text-darkBlue text-xl font-bold font-[family-name:var(--font-eb-garamond)]',
+      ])}`}
+      {...rest}
+    >
+      {text}
+    </h3>
+  );
 };

@@ -3,8 +3,9 @@
 
 import React from 'react';
 
-import { SearchIcon } from '@/assets/icons/SearchIcon';
 import { CircleTimesIcon } from '@/assets/icons/CircleTimesIcon';
+import { SearchIcon } from '@/assets/icons/SearchIcon';
+
 import { Button } from './Button';
 
 export interface SearchBarProps {
@@ -17,8 +18,7 @@ export const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(({ g
     const [searchQuery, setSearchQuery] = React.useState('');
 
     React.useEffect(() => {
-        getSearchResults(searchQuery);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+      getSearchResults(searchQuery);
     }, [searchQuery]);
 
     const onInputFocus = React.useCallback(() => {

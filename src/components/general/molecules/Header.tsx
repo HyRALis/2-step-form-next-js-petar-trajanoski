@@ -5,8 +5,9 @@ import React from 'react';
 import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon';
 import { LogoIcon } from '@/assets/icons/LogoIcon';
 import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
-import { HeaderContainer } from '../atoms/HeaderContainer';
+
 import { Button } from '../atoms/Button';
+import { HeaderContainer } from '../atoms/HeaderContainer';
 
 export const Header: React.FC = () => {
     const {

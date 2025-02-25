@@ -2,11 +2,13 @@
 
 import React from 'react';
 
-import { CountryPrefixListItem } from './CountryPrefixListItem';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { fetchCountries } from '@/services/utils/data/getCountries';
 import { ICountryPhonePrefix } from '@/types';
+
+import { CountryPrefixListItem } from './CountryPrefixListItem';
 import { Divider } from '../../../general/atoms/Divider';
-import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
+
 
 const pins = ['United Kingdom', 'Ireland', 'United States', 'Australia'];
 

@@ -1,8 +1,9 @@
 'use client';
 
+import React, { useCallback } from 'react';
+
 import { CheckmarkIcon } from '@/assets/icons/CheckmarkIcon';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import React, { useCallback } from 'react';
 
 export interface TabTagProps {
     text: string;
