@@ -1,8 +1,9 @@
 import { CheckmarkCircle } from '@/assets/icons/CheckmarkCircle';
 import React from 'react';
-import { Heading } from '../../atoms/Heading';
-import { Paragraph } from '../../atoms/Paragraph';
 import Link from 'next/link';
+
+import { Heading } from '../atoms/Heading';
+import { Paragraph } from '../atoms/Paragraph';
 
 export const ConfirmationScreen = () => {
     return (

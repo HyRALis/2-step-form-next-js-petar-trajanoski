@@ -4,13 +4,12 @@
 import React from 'react';
 
 import Markdown from 'react-markdown';
-
-import { Drawer } from '../../atoms/Drawer';
-import { Button } from '../../atoms/Button';
+import { Drawer } from '../atoms/Drawer';
+import { HeaderContainer } from '../atoms/HeaderContainer';
+import { Button } from '../atoms/Button';
 import { TimesIcon } from '@/assets/icons/TimesIcon';
-import { HeaderContainer } from '../../atoms/HeaderContainer';
-import { Heading } from '../../atoms/Heading';
-import { Paragraph } from '../../atoms/Paragraph';
+import { Heading } from '../atoms/Heading';
+import { Paragraph } from '../atoms/Paragraph';
 
 export interface MarkdownDrawerProps {
     markdownText: string;

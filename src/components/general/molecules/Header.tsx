@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { HeaderContainer } from '../../atoms/HeaderContainer';
-import { Button } from '../../atoms/Button';
+
 import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon';
 import { LogoIcon } from '@/assets/icons/LogoIcon';
 import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
+import { HeaderContainer } from '../atoms/HeaderContainer';
+import { Button } from '../atoms/Button';
 
 export const Header: React.FC = () => {
     const {

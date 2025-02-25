@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { TabTag } from '../../atoms/TabTag';
 import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
+import { TabTag } from '../atoms/TabTag';
 
 export interface TabsProps {
     tabs: number[];

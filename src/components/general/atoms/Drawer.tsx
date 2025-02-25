@@ -78,5 +78,3 @@ export const Drawer: React.FC<DrawerProps> = ({ header, children, isOpen, setIsO
 
     return !closeDrawer ? createPortal(drawerContent, document.body) : null;
 };
-
-export default Drawer;
