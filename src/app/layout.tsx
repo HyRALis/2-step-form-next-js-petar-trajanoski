@@ -27,7 +27,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={tailwindMerge([`${ebGaramond.variable}`, `${hkGrotesk.variable}`, 'antialiased'])}>
+            <body
+                className={tailwindMerge([
+                    `${ebGaramond.variable}`,
+                    `${hkGrotesk.variable}`,
+                    'antialiased',
+                    'relative'
+                ])}
+            >
                 <Analytics />
                 <UserProvider>{children}</UserProvider>
             </body>
