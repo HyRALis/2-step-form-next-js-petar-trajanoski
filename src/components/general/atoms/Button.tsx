@@ -22,7 +22,7 @@ const variantClasses = {
 };
 
 const sizeClasses = {
-    xs: 'text-base leading-6 px-6 py-4',
+    xs: 'text-xs px-4 py-3',
     sm: 'text-sm leading-5 px-5 py-[14px]',
     md: 'text-base leading-6 px-6 py-4'
 };
