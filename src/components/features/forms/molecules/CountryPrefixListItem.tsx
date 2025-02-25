@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { FlagImage } from '../atoms/FlagImage';
+import { FlagImage } from '../../../general/atoms/FlagImage';
 import { ICountryPhonePrefix } from '@/types';
-import { Paragraph } from '../atoms/Paragraph';
+import { Paragraph } from '../../../general/atoms/Paragraph';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface FlagListItemProps extends Omit<ICountryPhonePrefix, 'flag'> {

@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-import { Paragraph } from '../ui/atoms/Paragraph';
-import { TosDrawer } from '../ui/molecules/MarkdownDrawer';
+import { Paragraph } from '../atoms/Paragraph';
 import { tosMarkdownString } from '@/services/utils/tosMarkdownString';
 import { privacyPolicyMarkdownString } from '@/services/utils/privacyPolicyMarkdownString';
+import { MarkdownDrawer } from '../molecules/MarkdownDrawer';
 
 export const AdditionalInfo = () => {
     const [isOpenTos, setIsOpenTos] = React.useState(false);
@@ -23,8 +23,8 @@ export const AdditionalInfo = () => {
                     privacy policy
                 </span>
             </Paragraph>
-            <TosDrawer isOpen={isOpenTos} onClose={() => setIsOpenTos(false)} markdownText={tosMarkdownString} />
-            <TosDrawer
+            <MarkdownDrawer isOpen={isOpenTos} onClose={() => setIsOpenTos(false)} markdownText={tosMarkdownString} />
+            <MarkdownDrawer
                 isOpen={isOpenPrivacy}
                 onClose={() => setIsOpenPrivacy(false)}
                 markdownText={privacyPolicyMarkdownString}

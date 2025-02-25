@@ -2,18 +2,18 @@
 
 import React from 'react';
 
-import { AdditionalInfo } from './AdditionalInfo';
-import { Heading } from '../ui/atoms/Heading';
-import { Button } from '../ui/atoms/Button';
-import { FormLabel } from '../ui/atoms/form/FormLabel';
-import { FormInput } from '../ui/atoms/form/FormInput';
-import { FormErrorMessage } from '../ui/atoms/form/FormErrorMessage';
+import { AdditionalInfo } from '../../../general/organisms/AdditionalInfo';
+import { Heading } from '../../../general/atoms/Heading';
+import { Button } from '../../../general/atoms/Button';
+import { FormLabel } from '../atoms/FormLabel';
+import { FormInput } from '../atoms/FormInput';
+import { FormErrorMessage } from '../atoms/FormErrorMessage';
 import { FormDropdown } from './FormDropdown';
-import { useUserContext } from '@/context/MainContext';
+import { useUserContext } from '@/context/features/forms/MainContext';
 import { phoneInputValidation } from '@/services/utils/validation';
 import { useRouter } from 'next/navigation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
+import { useDelayFocusInput } from '@/services/hooks/features/forms/useDelayFocusInput';
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 export interface PhoneNumberFormProps {

@@ -5,8 +5,8 @@ import React from 'react';
 import { CountryPrefixListItem } from './CountryPrefixListItem';
 import { fetchCountries } from '@/services/utils/data/getCountries';
 import { ICountryPhonePrefix } from '@/types';
-import { Divider } from '../atoms/Divider';
-import { useUserContext } from '@/context/MainContext';
+import { Divider } from '../../../general/atoms/Divider';
+import { useUserContext } from '@/context/features/forms/MainContext';
 
 const pins = ['United Kingdom', 'Ireland', 'United States', 'Australia'];
 

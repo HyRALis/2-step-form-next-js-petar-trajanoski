@@ -1,14 +1,13 @@
 'use client';
 
+import { Container } from '@/components/general/atoms/Container';
+import { Tabs } from '@/components/general/molecules/Tabs';
+import { useUserContext } from '@/context/features/forms/MainContext';
 import React from 'react';
-
-import { Container } from '../ui/atoms/Container';
-import { Tabs } from '../ui/molecules/Tabs';
-import { PhoneNumberForm } from './PhoneNumberForm';
+import { MultiViewSequencer } from '../../animation/organisms/MultiViewSequencer';
+import { DisableWrapper } from '@/components/general/atoms/DisableWrapper';
 import { PersonalInformationForm } from './PersonalInformationForm';
-import { useUserContext } from '@/context/MainContext';
-import { DisableWrapper } from '../ui/atoms/DisableWrapper';
-import { MultiViewSequencer } from './animation/MultiViewSequencer';
+import { PhoneNumberForm } from './PhoneNumberForm';
 
 export const FormContainer = () => {
     const {

@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { TabTag } from '../atoms/TabTag';
-import { useUserContext } from '@/context/MainContext';
+import { TabTag } from '../../atoms/TabTag';
+import { useUserContext } from '@/context/features/forms/MainContext';
 
 export interface TabsProps {
     tabs: number[];

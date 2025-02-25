@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
-import { UserProvider } from '@/context/MainContext';
+import { UserProvider } from '@/context/features/forms/MainContext';
 import { Analytics } from '@vercel/analytics/next';
 
 const ebGaramond = EB_Garamond({

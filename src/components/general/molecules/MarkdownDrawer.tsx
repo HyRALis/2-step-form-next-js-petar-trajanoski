@@ -5,20 +5,20 @@ import React from 'react';
 
 import Markdown from 'react-markdown';
 
-import { Drawer } from '../atoms/Drawer';
-import { Button } from '../atoms/Button';
+import { Drawer } from '../../atoms/Drawer';
+import { Button } from '../../atoms/Button';
 import { TimesIcon } from '@/assets/icons/TimesIcon';
-import { HeaderContainer } from '../atoms/HeaderContainer';
-import { Heading } from '../atoms/Heading';
-import { Paragraph } from '../atoms/Paragraph';
+import { HeaderContainer } from '../../atoms/HeaderContainer';
+import { Heading } from '../../atoms/Heading';
+import { Paragraph } from '../../atoms/Paragraph';
 
-export interface TosDrawerProps {
+export interface MarkdownDrawerProps {
     markdownText: string;
     isOpen: boolean;
     onClose: () => void;
 }
 
-export const TosDrawer: React.FC<TosDrawerProps> = ({ isOpen, onClose, markdownText }) => {
+export const MarkdownDrawer: React.FC<MarkdownDrawerProps> = ({ isOpen, onClose, markdownText }) => {
     return (
         <Drawer
             isOpen={isOpen}

@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import { Heading } from '../ui/atoms/Heading';
-import { Input } from '../ui/molecules/Input';
-import { Button } from '../ui/atoms/Button';
-import { Paragraph } from '../ui/atoms/Paragraph';
-import { useUserContext } from '@/context/MainContext';
+import { Heading } from '../../../general/atoms/Heading';
+import { Input } from '../molecules/Input';
+import { Button } from '../../../general/atoms/Button';
+import { Paragraph } from '../../../general/atoms/Paragraph';
+import { useUserContext } from '@/context/features/forms/MainContext';
 import { textInputValidation } from '@/services/utils/validation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
@@ -25,6 +25,7 @@ export const PersonalInformationForm = () => {
             }
             setUser((prevUser) => ({ ...prevUser, firstName: e.target.value }));
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [firstNameError, user]
     );
 
@@ -35,6 +36,7 @@ export const PersonalInformationForm = () => {
             }
             setUser((prevUser) => ({ ...prevUser, lastName: e.target.value }));
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [lastNameError, user]
     );
 
@@ -51,6 +53,7 @@ export const PersonalInformationForm = () => {
         if (!firstNameError && !lastNameError) {
             setUser((prevUser) => ({ ...prevUser, tab: 2 }));
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.firstName, user.lastName]);
 
     return (

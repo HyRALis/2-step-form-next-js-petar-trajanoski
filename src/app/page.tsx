@@ -1,4 +1,4 @@
-import { FormContainer } from '@/components/organisms/FormContainer';
+import { FormContainer } from '@/components/features/forms/organisms/FormContainer';
 import { Header } from '@/components/ui/molecules/Header';
 
 export default function Home() {

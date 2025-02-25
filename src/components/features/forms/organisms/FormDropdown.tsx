@@ -3,9 +3,9 @@
 import React from 'react';
 
 import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
-import { FormDropdownDrawer } from '../ui/molecules/FormDropdownDrawer';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
+import { FormDropdownDrawer } from '@/components/general/molecules/FormDropdownDrawer';
 
 export interface FormDropdownProps {
     value: string;

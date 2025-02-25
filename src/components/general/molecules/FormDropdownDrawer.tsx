@@ -3,13 +3,13 @@
 import React from 'react';
 
 import { TimesIcon } from '@/assets/icons/TimesIcon';
-import { Button } from '../atoms/Button';
-import { Drawer } from '../atoms/Drawer';
-import { SearchBar } from '../atoms/SearchBar';
-import { CountryPrefixList } from './CountryPrefixList';
-import { HeaderContainer } from '../atoms/HeaderContainer';
-import { useUserContext } from '@/context/MainContext';
-import { useDelayFocusInput } from '@/services/hooks/useDelayFocusInput';
+import { Button } from '../../atoms/Button';
+import { Drawer } from '../../atoms/Drawer';
+import { SearchBar } from '../../atoms/SearchBar';
+import { CountryPrefixList } from '../../features/forms/molecules/CountryPrefixList';
+import { HeaderContainer } from '../../atoms/HeaderContainer';
+import { useUserContext } from '@/context/features/forms/MainContext';
+import { useDelayFocusInput } from '@/services/hooks/features/forms/useDelayFocusInput';
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
 export interface FormDropdownDrawerProps {

@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 import FocusTrap from './FocusTrap';
-import { ConfigurableAnimationWrapper } from '@/components/organisms/animation/ConfigurableAnimationWrapper';
+import { ConfigurableAnimationWrapper } from '@/components/features/animation/organisms/ConfigurableAnimationWrapper';
 import { SLIDE_UP } from '@/services/utils/constants/animationPresets';
 
 export interface DrawerProps {
