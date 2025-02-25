@@ -13,7 +13,7 @@ export interface ErrorState {
     phoneNumberError: string | null;
 }
 
-export interface UserContextProps {
+export interface RegistrationFormContextProps {
     user: UserProps;
     setUser: React.Dispatch<React.SetStateAction<UserProps>>;
     errors: ErrorState;

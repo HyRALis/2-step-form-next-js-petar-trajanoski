@@ -8,7 +8,7 @@ import { Drawer } from '../../atoms/Drawer';
 import { SearchBar } from '../../atoms/SearchBar';
 import { CountryPrefixList } from '../../features/forms/molecules/CountryPrefixList';
 import { HeaderContainer } from '../../atoms/HeaderContainer';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { useDelayFocusInput } from '@/services/hooks/features/forms/useDelayFocusInput';
 import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 
@@ -18,7 +18,7 @@ export interface FormDropdownDrawerProps {
 }
 
 export const FormDropdownDrawer: React.FC<FormDropdownDrawerProps> = ({ isOpen, onClose }) => {
-    const { setUser } = useUserContext();
+    const { setUser } = useRegistrationFormContext();
     const [searchQuery, setSearchQuery] = React.useState('');
     const { inputRef } = useDelayFocusInput({
         delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,

@@ -2,7 +2,7 @@
 
 import React, { useCallback } from 'react';
 
-import { ErrorState, UserContextProps, UserProps } from '@/types/mainContextTypes';
+import { ErrorState, RegistrationFormContextProps, UserProps } from '@/types/features/forms/mainContextTypes';
 
 const defaultUser: UserProps = {
     tab: 1,
@@ -19,13 +19,13 @@ const defaultErrors: ErrorState = {
     phoneNumberError: null
 };
 
-const UserContext = React.createContext<UserContextProps | undefined>(undefined);
+const RegistrationFormContext = React.createContext<RegistrationFormContextProps | undefined>(undefined);
 
-interface UserProviderProps {
+interface RegistrationFormProviderProps {
     children: React.ReactNode;
 }
 
-export const UserProvider = ({ children }: UserProviderProps) => {
+export const RegistrationFormProvider = ({ children }: RegistrationFormProviderProps) => {
     const [user, setUser] = React.useState<UserProps>(defaultUser);
     const [errors, setErrors] = React.useState<ErrorState>(defaultErrors);
 
@@ -47,14 +47,14 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     const resetUser = useCallback(() => setUser(defaultUser), []);
 
     return (
-        <UserContext.Provider value={{ user, setUser, errors, setErrors, resetUser }}>{children}</UserContext.Provider>
+        <RegistrationFormContext.Provider value={{ user, setUser, errors, setErrors, resetUser }}>{children}</RegistrationFormContext.Provider>
     );
 };
 
-export const useUserContext = () => {
-    const context = React.useContext(UserContext);
+export const useRegistrationFormContext = () => {
+    const context = React.useContext(RegistrationFormContext);
     if (!context) {
-        throw new Error('useUserContext must be used within a UserProvider');
+        throw new Error('useRegistrationFormContext must be used within a RegistrationFormProvider');
     }
     return context;
 };

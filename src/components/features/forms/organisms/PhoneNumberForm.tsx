@@ -9,7 +9,7 @@ import { FormLabel } from '../atoms/FormLabel';
 import { FormInput } from '../atoms/FormInput';
 import { FormErrorMessage } from '../atoms/FormErrorMessage';
 import { FormDropdown } from './FormDropdown';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { phoneInputValidation } from '@/services/utils/validation';
 import { useRouter } from 'next/navigation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
@@ -29,7 +29,7 @@ export const PhoneNumberForm: React.FC<PhoneNumberFormProps> = ({ isActive }) =>
         setUser,
         setErrors,
         resetUser
-    } = useUserContext();
+    } = useRegistrationFormContext();
     const router = useRouter();
     const { inputRef } = useDelayFocusInput({
         delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,

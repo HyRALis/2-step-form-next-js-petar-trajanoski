@@ -3,14 +3,14 @@
 import React from 'react';
 
 import { TabTag } from '../../atoms/TabTag';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 
 export interface TabsProps {
     tabs: number[];
 }
 
 export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
-    const { user } = useUserContext();
+    const { user } = useRegistrationFormContext();
 
     return (
         <div className="flex justify-center items-center space-x-[4px]">

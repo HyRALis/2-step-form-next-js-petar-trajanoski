@@ -5,13 +5,13 @@ import { HeaderContainer } from '../../atoms/HeaderContainer';
 import { Button } from '../../atoms/Button';
 import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon';
 import { LogoIcon } from '@/assets/icons/LogoIcon';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 
 export const Header: React.FC = () => {
     const {
         user: { tab },
         setUser
-    } = useUserContext();
+    } = useRegistrationFormContext();
 
     return (
         <HeaderContainer>

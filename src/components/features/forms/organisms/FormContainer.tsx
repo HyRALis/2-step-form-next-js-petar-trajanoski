@@ -2,7 +2,7 @@
 
 import { Container } from '@/components/general/atoms/Container';
 import { Tabs } from '@/components/general/molecules/Tabs';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import React from 'react';
 import { MultiViewSequencer } from '../../animation/organisms/MultiViewSequencer';
 import { DisableWrapper } from '@/components/general/atoms/DisableWrapper';
@@ -12,7 +12,7 @@ import { PhoneNumberForm } from './PhoneNumberForm';
 export const FormContainer = () => {
     const {
         user: { tab }
-    } = useUserContext();
+    } = useRegistrationFormContext();
 
     return (
         <Container className="pt-[72px] mb-6 h-full max-w-96 lg:max-w-2xl overflow-hidden">

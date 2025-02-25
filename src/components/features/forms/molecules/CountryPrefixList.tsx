@@ -6,7 +6,7 @@ import { CountryPrefixListItem } from './CountryPrefixListItem';
 import { fetchCountries } from '@/services/utils/data/getCountries';
 import { ICountryPhonePrefix } from '@/types';
 import { Divider } from '../../../general/atoms/Divider';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 
 const pins = ['United Kingdom', 'Ireland', 'United States', 'Australia'];
 
@@ -22,7 +22,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
     const [countriesToDisplay, setCountriesToDisplay] = React.useState<ICountryPhonePrefix[]>([]);
     const {
         user: { prefix }
-    } = useUserContext();
+    } = useRegistrationFormContext();
 
     React.useEffect(() => {
         const getCountries = async () => {

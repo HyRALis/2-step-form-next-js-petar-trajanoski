@@ -6,7 +6,7 @@ import { Heading } from '../../../general/atoms/Heading';
 import { Input } from '../molecules/Input';
 import { Button } from '../../../general/atoms/Button';
 import { Paragraph } from '../../../general/atoms/Paragraph';
-import { useUserContext } from '@/context/features/forms/MainContext';
+import { useRegistrationFormContext } from '@/context/features/forms/RegistrationFormProvider';
 import { textInputValidation } from '@/services/utils/validation';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
@@ -16,7 +16,7 @@ export const PersonalInformationForm = () => {
         errors: { firstNameError, lastNameError },
         setUser,
         setErrors
-    } = useUserContext();
+    } = useRegistrationFormContext();
 
     const handleFirstNameChange = React.useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +53,7 @@ export const PersonalInformationForm = () => {
         if (!firstNameError && !lastNameError) {
             setUser((prevUser) => ({ ...prevUser, tab: 2 }));
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.firstName, user.lastName]);
 
     return (
