@@ -2,11 +2,11 @@ import { Meta, StoryObj } from '@storybook/react';
 import { TabTag } from '@/components/general/atoms/TabTag';
 
 const meta = {
-    title: 'Components/TabTag',
+    title: 'Components/General/Atoms/TabTag',
     component: TabTag,
     argTypes: {
         text: { control: 'text' },
-        isActive: { control: 'boolean' },
+        variant: { control: 'select', options: ['default', 'active', 'finished'] },
         onClick: { action: 'clicked' }
     }
 } satisfies Meta<typeof TabTag>;
@@ -18,21 +18,27 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         text: '10',
-        isActive: false
+        variant: 'default'
     }
 };
 
 export const Active: Story = {
     args: {
         text: '1',
-        isActive: true
+        variant: 'active'
     }
 };
 
+export const Finished: Story = {
+    args: {
+        text: '1',
+        variant: 'finished',
+    }
+};
 export const Clickable: Story = {
     args: {
         text: '1',
-        isActive: false,
+        variant: 'default',
         onClick: () => alert('Tab clicked!')
     }
 };
