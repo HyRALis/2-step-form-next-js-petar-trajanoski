@@ -1,5 +1,5 @@
 import { FormContainer } from '@/components/features/forms/organisms/FormContainer';
-import { Header } from '@/components/ui/molecules/Header';
+import { Header } from '@/components/general/molecules/Header';
 
 export default function Home() {
     return (
