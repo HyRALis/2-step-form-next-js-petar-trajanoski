@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@/components/general/atoms/Button';
+
 import '@/app/globals.css';
+
+import { Button } from '@/components/general/atoms/Button';
 import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon';
 import { ChevronDownIcon } from '@/assets/icons/ChevronDownIcon';
 
