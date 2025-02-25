@@ -1,45 +1,45 @@
-import type { Metadata } from "next";
-import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import type { Metadata } from 'next';
+import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
 
 import './globals.css';
 
-import { tailwindMerge } from '@/services/utils/tailwindMerge';
 import { RegistrationFormProvider } from '@/context/features/forms/RegistrationFormProvider';
+import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 const ebGaramond = EB_Garamond({
-    variable: '--font-eb-garamond',
-    subsets: ['latin']
+  variable: '--font-eb-garamond',
+  subsets: ['latin'],
 });
 
 const hkGrotesk = Hanken_Grotesk({
-    variable: '--font-hanken-grotesk',
-    subsets: ['latin']
+  variable: '--font-hanken-grotesk',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-    title: '2 Step Form ',
-    description: 'Crated for interview purposes, hope you like it! :)'
+  title: '2 Step Form ',
+  description: 'Crated for interview purposes, hope you like it! :)',
 };
 
 export default function RootLayout({
-    children
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body
-                className={tailwindMerge([
-                    `${ebGaramond.variable}`,
-                    `${hkGrotesk.variable}`,
-                    'antialiased',
-                    'relative'
-                ])}
-            >
-                <Analytics />
-                <RegistrationFormProvider>{children}</RegistrationFormProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body
+        className={tailwindMerge([
+          `${ebGaramond.variable}`,
+          `${hkGrotesk.variable}`,
+          'antialiased',
+          'relative',
+        ])}
+      >
+        <Analytics />
+        <RegistrationFormProvider>{children}</RegistrationFormProvider>
+      </body>
+    </html>
+  );
 }

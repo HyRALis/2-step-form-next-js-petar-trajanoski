@@ -1,8 +1,9 @@
-import { ConfirmationScreen } from '@/components/general/molecules/ConfirmationScreen';
 import React from 'react';
 
+import { ConfirmationScreen } from '@/components/general/molecules/ConfirmationScreen';
+
 const page = () => {
-    return <ConfirmationScreen />;
+  return <ConfirmationScreen />;
 };
 
 export default page;
