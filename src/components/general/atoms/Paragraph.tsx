@@ -8,7 +8,10 @@ export interface ParagraphProps extends React.HTMLAttributes<HTMLParagraphElemen
 
 export const Paragraph: React.FC<ParagraphProps> = ({ children, className, ...rest }) => {
   return (
-    <p className={tailwindMerge(['text-xs font-light text-darkBlue', className])} {...rest}>
+    <p
+      className={tailwindMerge(['text-xs leading-[1.5] font-light text-darkBlue', className])}
+      {...rest}
+    >
       {children}
     </p>
   );

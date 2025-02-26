@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { TabTag } from '@/components/general/atoms/TabTag';
 
 const meta = {
