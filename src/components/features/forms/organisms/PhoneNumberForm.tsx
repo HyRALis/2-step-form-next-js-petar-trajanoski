@@ -24,12 +24,14 @@ export const PhoneNumberForm: React.FC = () => {
     register,
     isSubmitting,
     setValue,
+    clearErrors,
     formState: { errors },
   } = useEnhancedForm<RegistrationFormValues>();
 
   const { inputRef } = useDelayFocusInput({
     delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,
     focusOnFirstRender: true,
+    activeTrigger: true,
   });
 
   const fullPhoneNumber = React.useMemo(
@@ -39,6 +41,12 @@ export const PhoneNumberForm: React.FC = () => {
 
   React.useEffect(() => {
     register('phoneNumber');
+
+    const timer = setTimeout(() => {
+      clearErrors('phoneNumber');
+    }, ANIMATION_DURATION_MILLISECONDS * 0.2);
+
+    return () => clearTimeout(timer);
   }, []);
 
   React.useEffect(() => {
