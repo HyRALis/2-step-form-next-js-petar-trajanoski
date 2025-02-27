@@ -23,16 +23,32 @@ import { MultiViewSequencer } from '../../animation/organisms/MultiViewSequencer
 export const FormContainer = () => {
   const router = useRouter();
 
+  const memoizedDefaultValues = React.useMemo(() => {
+    const storedValues = localStorage.getItem('registrationFormData');
+
+    if (storedValues) {
+      const { currentStep, ...rest } = JSON.parse(storedValues);
+
+      return {
+        initialStep: currentStep,
+        defaultValues: { registrationFormDefaultValues, ...rest },
+      };
+    }
+
+    return { initialStep: 'personalInfo', defaultValues: registrationFormDefaultValues };
+  }, []);
+
   const methods = useZodForm({
     schema: registrationFormSchema,
-    defaultValues: registrationFormDefaultValues,
+    defaultValues: memoizedDefaultValues.defaultValues,
     steps: registrationFormSteps,
     reValidateMode: 'onChange',
     mode: 'all',
+    initialStep: memoizedDefaultValues.initialStep,
     onSubmit: (data) => {
       console.log('Form submitted with data:', data);
       methods.reset();
-      localStorage.removeItem('user');
+      localStorage.removeItem('registrationFormData');
       router.push('/confirmation');
     },
   });
@@ -41,6 +57,19 @@ export const FormContainer = () => {
     const index = registrationFormSteps.findIndex((step) => step.name === methods.currentStep);
     return index === -1 ? 0 : index + 1;
   }, [methods.currentStep]);
+
+  const [firstName, lastName, phoneNumber] = methods.watch([
+    'firstName',
+    'lastName',
+    'phoneNumber',
+  ]);
+
+  React.useEffect(() => {
+    localStorage.setItem(
+      'registrationFormData',
+      JSON.stringify({ firstName, lastName, phoneNumber, currentStep: methods.currentStep }),
+    );
+  }, [firstName, lastName, phoneNumber, methods.currentStep]);
 
   React.useEffect(() => {
     const errors = methods.formState.errors;

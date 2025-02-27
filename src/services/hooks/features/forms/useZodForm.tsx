@@ -20,8 +20,7 @@ export interface UseZodFormOptions<T extends FieldValues>
   schema: z.ZodType<T>;
   onSubmit?: SubmitHandler<T>;
   serverErrors?: ServerErrors<T>;
-
-  // New option: Step configuration
+  initialStep?: string;
   steps?: Array<{
     name: string;
     fields: Array<Path<T>>;
@@ -67,6 +66,7 @@ export function useZodForm<T extends FieldValues>({
   onSubmit,
   serverErrors: initialServerErrors,
   steps,
+  initialStep,
   ...formOptions
 }: UseZodFormOptions<T>): UseZodFormReturn<T> {
   const form = useForm<T>({
@@ -78,7 +78,7 @@ export function useZodForm<T extends FieldValues>({
   const [serverErrors, setServerErrors] = useState<ServerErrors<T>>(initialServerErrors || {});
 
   const [currentStep, setCurrentStep] = useState<string | null>(
-    steps && steps.length > 0 ? steps[0].name : null,
+    initialStep ? initialStep : steps && steps.length > 0 ? steps[0].name : null,
   );
 
   /**
