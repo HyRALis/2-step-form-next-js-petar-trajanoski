@@ -9,43 +9,46 @@ import { ANIMATION_DURATION_MILLISECONDS } from '@/services/utils/constants';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 export interface FormDropdownProps {
-    value: string;
-    hasError?: boolean;
+  value: string;
+  hasError?: boolean;
+  onChange: (prefix: string, name: string, code: string) => void;
 }
 
-export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError }) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [closeDrawer, setCloseDrawer] = React.useState(true);
+export const FormDropdown: React.FC<FormDropdownProps> = ({ value, hasError, onChange }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [closeDrawer, setCloseDrawer] = React.useState(true);
 
-    React.useEffect(() => {
-        let timer: NodeJS.Timeout | null = null;
+  React.useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
 
-        if (isOpen) {
-            setCloseDrawer(false);
-        } else {
-            timer = setTimeout(() => {
-                setCloseDrawer(true);
-            }, ANIMATION_DURATION_MILLISECONDS - 50);
-        }
+    if (isOpen) {
+      setCloseDrawer(false);
+    } else {
+      timer = setTimeout(() => {
+        setCloseDrawer(true);
+      }, ANIMATION_DURATION_MILLISECONDS - 50);
+    }
 
-        return () => {
-            if (timer) clearTimeout(timer);
-        };
-    }, [isOpen]);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [isOpen]);
 
-    return (
-        <>
-            <button
-                className={tailwindMerge([
-                    'flex items-center justify-between max-w-min space-x-3 flex-grow-0 flex-shrink-0 py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary focus:outline-none bg-transparent transition-all duration-200 ease-in-out',
-                    hasError && 'border-danger'
-                ])}
-                onClick={() => setIsOpen(true)}
-            >
-                <span>{value}</span>
-                <ChevronDownIcon />
-            </button>
-            {!closeDrawer && <FormDropdownDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />}
-        </>
-    );
+  return (
+    <>
+      <button
+        className={tailwindMerge([
+          'flex items-center justify-between max-w-min space-x-3 flex-grow-0 flex-shrink-0 py-4 px-6 w-full rounded-full border-2 border-darkBlue12 focus:border-primary focus:outline-none bg-transparent transition-all duration-200 ease-in-out',
+          hasError && 'border-danger',
+        ])}
+        onClick={() => setIsOpen(true)}
+      >
+        <span>{value}</span>
+        <ChevronDownIcon />
+      </button>
+      {!closeDrawer && (
+        <FormDropdownDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} onChange={onChange} />
+      )}
+    </>
+  );
 };

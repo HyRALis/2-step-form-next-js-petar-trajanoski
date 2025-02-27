@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import React from 'react';
 import { useState } from 'react';
 import {
   useForm,
@@ -31,16 +32,13 @@ export interface UseZodFormOptions<T extends FieldValues>
 export interface UseZodFormReturn<T extends FieldValues>
   extends Omit<UseFormReturn<T>, 'handleSubmit'> {
   isSubmitting: boolean;
+  serverErrors: ServerErrors<T>;
   setIsSubmitting: (value: boolean) => void;
   setServerErrors: (errors: ServerErrors<T>) => void;
   handleSubmit: (
     onValid: SubmitHandler<T>,
     onInvalid?: (errors: unknown) => void,
   ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
-  formState: UseFormReturn<T>['formState'] & {
-    serverErrors?: ServerErrors<T>;
-  };
-
   validateStep: (stepName: string) => Promise<boolean>;
   currentStep: string | null;
   setCurrentStep: (stepName: string) => void;
@@ -55,13 +53,13 @@ export interface UseZodFormReturn<T extends FieldValues>
  * Zod schema validation, server-side error handling, and multi-step form navigation.
  *
  * @template T The type of the form fields.
- * 
+ *
  * @param {z.ZodType<T>} schema - The Zod schema for form validation.
  * @param {SubmitHandler<T>} [onSubmit] - A callback function that is called when the form is successfully submitted.
  * @param {ServerErrors<T>} [initialServerErrors] - Initial server-side errors to populate the form with.
  * @param {Array<{name: string, fields: Array<Path<T>>}>} [steps] - Configuration for multi-step navigation, including step names and the fields in each step.
  * @param {UseFormProps<T>} formOptions - Additional options to pass to the `useForm` hook.
- * 
+ *
  * @returns {UseZodFormReturn<T>} An object with enhanced form methods and state including multi-step navigation and server-side error handling.
  */
 export function useZodForm<T extends FieldValues>({
@@ -134,7 +132,6 @@ export function useZodForm<T extends FieldValues>({
     return step ? step.fields : [];
   };
 
-  
   /**
    * Validates a step of the form. If no step configuration is found
    * with the given stepName, the whole form is validated.
@@ -148,19 +145,14 @@ export function useZodForm<T extends FieldValues>({
       return form.trigger();
     }
 
-    const results = await Promise.all(fieldsToValidate.map((field) => form.trigger(field)));
+    const result = await form.trigger(fieldsToValidate);
 
-    return results.every((result) => result === true);
-  };
-
-  const formStateWithServerErrors = {
-    ...form.formState,
-    serverErrors,
+    return result;
   };
 
   return {
     ...form,
-    formState: formStateWithServerErrors,
+    serverErrors,
     isSubmitting,
     setIsSubmitting,
     setServerErrors,
