@@ -20,13 +20,8 @@ export const PhoneNumberForm: React.FC = () => {
   const [prefix, setPrefix] = React.useState<string>('+44');
   const [phoneNumber, setPhoneNumber] = React.useState<string>('');
 
-  const {
-    register,
-    isSubmitting,
-    setValue,
-    clearErrors,
-    formState: { errors },
-  } = useEnhancedForm<RegistrationFormValues>();
+  const { register, isSubmitting, clearErrors, formState } =
+    useEnhancedForm<RegistrationFormValues>();
 
   const { inputRef } = useDelayFocusInput({
     delayAmountMs: ANIMATION_DURATION_MILLISECONDS + 50,
@@ -34,29 +29,16 @@ export const PhoneNumberForm: React.FC = () => {
     activeTrigger: true,
   });
 
-  const fullPhoneNumber = React.useMemo(
-    () => `${prefix}${phoneNumber.trim()}`,
-    [prefix, phoneNumber],
-  );
-
   React.useEffect(() => {
-    register('phoneNumber');
-    register('prefix');
+    register('phoneNumber', { value: phoneNumber });
+    register('prefix', { value: prefix });
 
     const timer = setTimeout(() => {
-      clearErrors('phoneNumber');
+      clearErrors('fullPhoneNumber');
     }, ANIMATION_DURATION_MILLISECONDS * 0.2);
 
     return () => clearTimeout(timer);
   }, []);
-
-  React.useEffect(() => {
-    setValue('phoneNumber', fullPhoneNumber);
-  }, [fullPhoneNumber, setValue]);
-
-  React.useEffect(() => {
-    setValue('prefix', prefix);
-  }, [prefix, setValue]);
 
   return (
     <div className={tailwindMerge(['flex-col w-full flex-shrink-0'])}>
@@ -68,7 +50,7 @@ export const PhoneNumberForm: React.FC = () => {
             <FormDropdown
               value={prefix}
               onChange={(prefix) => setPrefix(prefix)}
-              hasError={!!errors?.phoneNumber?.message}
+              hasError={!!formState.errors?.fullPhoneNumber?.message}
             />
             <FormInput
               ref={inputRef}
@@ -78,12 +60,12 @@ export const PhoneNumberForm: React.FC = () => {
               className="placeholder:text-light"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              hasError={!!errors?.phoneNumber?.message}
+              hasError={!!formState.errors?.fullPhoneNumber?.message}
               aria-labelledby="phone-number"
             />
           </div>
-          {errors.phoneNumber && (
-            <FormErrorMessage errorMessage={errors?.phoneNumber?.message ?? ''} />
+          {formState.errors.fullPhoneNumber && (
+            <FormErrorMessage errorMessage={formState.errors?.fullPhoneNumber?.message ?? ''} />
           )}
         </div>
       </div>

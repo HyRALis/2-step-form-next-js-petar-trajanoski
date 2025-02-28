@@ -22,28 +22,30 @@ export const registrationFormPersonalInfoSchema = z.object({
 
 export const registrationFormPhoneNumberSchema = z.object({
   prefix: z.string().optional(),
-  phoneNumber: z
-    .string()
-    .nonempty('Phone number is required')
-    .refine(
-      (number) => {
-        try {
-          const phoneNumber = phoneUtil.parse(number);
-          return phoneUtil.isValidNumber(phoneNumber);
-        } catch {
-          return false;
-        }
-      },
-      { message: 'Invalid mobile number' },
-    ),
+  phoneNumber: z.string().nonempty('Phone number is required'),
 });
 
-export const registrationFormSchema = z.object({
-  ...registrationFormPersonalInfoSchema.shape,
-  ...registrationFormPhoneNumberSchema.shape,
-})
+export const registrationFormSchema = z
+  .object({
+    ...registrationFormPersonalInfoSchema.shape,
+    ...registrationFormPhoneNumberSchema.shape,
+  })
+  .refine(
+    ({ prefix, phoneNumber }) => {
+      try {
+        const fullPhoneNumber = phoneUtil.parse(`${prefix}${phoneNumber.trim()}`);
+        return phoneUtil.isValidNumber(fullPhoneNumber);
+      } catch {
+        return false;
+      }
+    },
+    { message: 'Invalid mobile number', path: ['fullPhoneNumber'] },
+  );
 
-export const registrationFormSteps: { name: string; fields: ('firstName' | 'lastName' | 'phoneNumber')[] }[] = [
+export const registrationFormSteps: {
+  name: string;
+  fields: ('firstName' | 'lastName' | 'phoneNumber')[];
+}[] = [
   {
     name: 'personalInfo',
     fields: ['firstName', 'lastName'],
@@ -58,8 +60,11 @@ export const registrationFormDefaultValues = {
   firstName: '',
   lastName: '',
   phoneNumber: '',
+  prefix: '+44',
 };
 
 export type RegistrationFormPersonalInfoValues = z.infer<typeof registrationFormPersonalInfoSchema>;
 export type RegistrationFormPhoneNumberValues = z.infer<typeof registrationFormPhoneNumberSchema>;
-export type RegistrationFormValues = z.infer<typeof registrationFormSchema>;
+export type RegistrationFormValues = z.infer<typeof registrationFormSchema> & {
+  fullPhoneNumber: string;
+};
