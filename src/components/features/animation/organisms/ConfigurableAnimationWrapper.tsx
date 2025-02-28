@@ -72,8 +72,6 @@ export const ConfigurableAnimationWrapper: React.FC<ConfigurableWrapperProps> = 
         }
     });
 
-    React.useEffect(() => {console.log({shouldRender})}, [shouldRender]);
-
     if (!shouldRender) return null;
 
     return transitions((styles, item) => item && <animated.div style={styles} className={className}>{children}</animated.div>);

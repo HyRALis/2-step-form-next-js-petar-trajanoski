@@ -21,16 +21,12 @@ export const PersonalInformationForm = () => {
   const handleOnContinueClick = React.useCallback(async () => {
     if (!currentStep) return;
 
-    console.log('Continue clicked for step:', currentStep);
-
     const isValid = await validateStep(currentStep);
 
     if (isValid) {
       const currentIndex = registrationFormSteps.findIndex((step) => step.name === currentStep);
       if (currentIndex < registrationFormSteps.length - 1) {
         const nextStep = registrationFormSteps[currentIndex + 1];
-
-        console.log({ errors: formState.errors });
 
         for (let i = currentIndex + 1; i < registrationFormSteps.length; i++) {
           const step = registrationFormSteps[i];
