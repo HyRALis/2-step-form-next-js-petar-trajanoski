@@ -68,4 +68,4 @@ const phoneInputValidation = async (phone: string, prefix: string, code: string)
     return '';
 };
 
-export { textInputValidation, phoneInputValidation };
+export { isAlphaWithSpaces, textInputValidation, phoneInputValidation };
