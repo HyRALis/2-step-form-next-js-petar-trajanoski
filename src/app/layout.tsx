@@ -4,7 +4,6 @@ import { EB_Garamond, Hanken_Grotesk } from 'next/font/google';
 
 import './globals.css';
 
-import { RegistrationFormProvider } from '@/context/features/forms/RegistrationFormProvider';
 import { tailwindMerge } from '@/services/utils/tailwindMerge';
 
 const ebGaramond = EB_Garamond({
@@ -38,7 +37,7 @@ export default function RootLayout({
         ])}
       >
         <Analytics />
-        <RegistrationFormProvider>{children}</RegistrationFormProvider>
+        {children}
       </body>
     </html>
   );

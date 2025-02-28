@@ -1,12 +1,14 @@
-import { Header } from '@/components/general/molecules/Header';
+import { RegisterPageWrapper } from '@/components/templates/RegisterPageWrapper';
 
-import { FormContainer } from '@/components/features/forms/organisms/FormContainer';
+import { RegistrationPageProvider } from '@/context/features/forms/RegistrationPageProvider';
+import { fetchCountries } from '@/services/utils/data/getCountries';
 
-export default function Home() {
+export default async function Home() {
+  const countries = await fetchCountries();
+
   return (
-    <div className="flex flex-col flex-grow-0 flex-shrink-0 h-screen justify-center items-center font-[family-name:var(--font-hanken-grotesk)] text-darkBlue overflow-hidden">
-      <Header />
-      <FormContainer />
-    </div>
+    <RegistrationPageProvider countries={countries}>
+      <RegisterPageWrapper />
+    </RegistrationPageProvider>
   );
 }
