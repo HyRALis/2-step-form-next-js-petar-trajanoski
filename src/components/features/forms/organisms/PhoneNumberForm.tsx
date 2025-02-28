@@ -41,6 +41,7 @@ export const PhoneNumberForm: React.FC = () => {
 
   React.useEffect(() => {
     register('phoneNumber');
+    register('prefix');
 
     const timer = setTimeout(() => {
       clearErrors('phoneNumber');
@@ -52,6 +53,10 @@ export const PhoneNumberForm: React.FC = () => {
   React.useEffect(() => {
     setValue('phoneNumber', fullPhoneNumber);
   }, [fullPhoneNumber, setValue]);
+
+  React.useEffect(() => {
+    setValue('prefix', prefix);
+  }, [prefix, setValue]);
 
   return (
     <div className={tailwindMerge(['flex-col w-full flex-shrink-0'])}>

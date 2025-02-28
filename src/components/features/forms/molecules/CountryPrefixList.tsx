@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { useEnhancedForm } from '@/context/features/forms/EnchancedFormProvider';
 import { useRegistrationPageContext } from '@/context/features/forms/RegistrationPageProvider';
 import { ICountryPhonePrefix } from '@/types';
 
@@ -17,6 +18,7 @@ export interface CountryPrefixList {
 
 export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, onChange }) => {
   const { countries } = useRegistrationPageContext();
+  const { watch } = useEnhancedForm();
 
   const [pinnedCountries, setPinnedCountries] = React.useState<ICountryPhonePrefix[]>(
     countries.filter((country) => pins.includes(country.name)),
@@ -47,6 +49,8 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, countries]);
 
+  const prefix = watch('prefix');
+
   return (
     <div className="flex flex-col items-center w-full overflow-hidden">
       <div className="flex flex-col items-center w-full overflow-y-auto scrollbar">
@@ -59,7 +63,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
               prefix={country.prefix}
               code={country.code}
               src={country.flag}
-              //   isActive={country.prefix === prefix}
+              isActive={country.prefix === prefix}
               onClick={() =>
                 onChange({ prefix: country.prefix, name: country.name, code: country.code })
               }
@@ -76,7 +80,7 @@ export const CountryPrefixList: React.FC<CountryPrefixList> = ({ searchQuery, on
               prefix={country.prefix}
               code={country.code}
               src={country.flag}
-              //   isActive={country.prefix === prefix}
+              isActive={country.prefix === prefix}
               onClick={() =>
                 onChange({ prefix: country.prefix, name: country.name, code: country.code })
               }

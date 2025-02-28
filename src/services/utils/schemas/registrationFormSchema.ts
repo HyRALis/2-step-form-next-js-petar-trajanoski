@@ -21,6 +21,7 @@ export const registrationFormPersonalInfoSchema = z.object({
 });
 
 export const registrationFormPhoneNumberSchema = z.object({
+  prefix: z.string().optional(),
   phoneNumber: z
     .string()
     .nonempty('Phone number is required')
